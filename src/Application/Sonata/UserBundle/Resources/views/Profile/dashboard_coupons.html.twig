@@ -1,0 +1,15 @@
+<div class="row coupons-box">
+    <div class="col-xs-12 box-title has-underline">Coupons</div>
+    <!--div class="col-xs-12 box-sub-title">Get 1 entry for every $1 spent in our store</div-->
+    {% if coupons %}
+    <div class="col-xs-12 box-sub-title">
+        {% for coupon in coupons %}
+        <div class="col-xs-12">
+            <a style="color:white" href="{{coupon.url}}">{{coupon.alias}}</a>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="col-xs-12 box-sub-title">No coupons available for you.</div>
+    {% endif %}
+</div>

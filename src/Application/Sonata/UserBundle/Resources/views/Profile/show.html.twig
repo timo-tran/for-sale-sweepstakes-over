@@ -1,0 +1,207 @@
+{% extends "SonataUserBundle:Profile:action.html.twig" %}
+{% block title %}{{settings.siteName ? settings.siteName : 'Restomods'}} Member Dashboard{% endblock %}
+{% block sonata_profile_content %}
+    <style>
+        body {background-image: linear-gradient(to bottom, #0F8790 , #6BCACE);}
+        .container-fluid > .navbar-header {background:white;margin-right: -30px;margin-left: -30px;padding: 15px 30px;}
+        .navbar-nav{margin-top: -2px;}
+        .navbar-default .navbar-toggle {background:#d6be60;opacity: 0;pointer-events: none;}
+        .navbar-default .navbar-toggle:hover {background: #CABD85;}
+        .navbar-default .navbar-toggle .icon-bar{background-color: #FFF}
+        .navbar-brand{padding: 8px 0px; left: calc(5vw); position: absolute;margin-left: 0px !important;}
+        .vip-title{font-size: 24px;color:#d6be60;}
+        .vip-desc{font-size: 18px;color:#FFF;}
+        b {font-weight: 700;}
+        .strong {font-weight: 700;}
+        .brown {color:#d6be60;}
+        .count-down { border: 2px solid #1F1F1F; background-image: url({{ asset('images/dashboard/black-geo.png') }}); background-size: cover; border-radius: 4px; padding: 5px 0px;}
+        .count-down .title { font-size: 32px; color: #FFF;}
+        .count-down .timer { font-size:24px; color: #C3122A; display:flex}
+        .count-down .timer div {flex: 1 0; position: relative;}
+        .count-down .unit { font-size:10px; color: #707070; margin-top: 10px; display:flex;=}
+        .count-down .unit div {flex: 1 0; position: relative;}
+        .count-down .timer div:not(:last-child)::after { position:absolute; right: -2px; top: 0px; content: ':'; font-size:24px; color: #C3122A; }
+        .count-down-closed{margin-top:50px;}
+        .count-down-closed span{color:#C3122A;font-size:48px;font-weight:700;}
+
+        .elButton {flex-direction: column;display: flex;align-items: center;width: 100%; padding: 13px 35px; border: 1px solid rgba(0,0,0,0.1); box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);border-radius: 4px;background-color: rgb(14, 199, 17);color: rgb(0, 0, 0);}
+        .elButton.magazine-action {background:transparent;color:rgb(228, 59, 44);border:3px solid rgb(228, 59, 44);width:unset;font-size:20px;text-decoration:unset;font-weight:600;}
+        .elButton.white { color: white;}
+        .elButton:hover {background: #0b970d;}
+        .elButton.magazine-action:hover {background:rgb(228, 59, 44);color:white;}
+        .elButton .main { font-weight: 700; text-align:center;}
+        .elButton .sub { font-weight: normal; text-align:center;}
+        .elButton .loading{display:none;}
+        .elButton.loading{pointer-events:none;position:relative;}
+        .elButton.loading .loading{display:block;position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:row;align-items:center;justify-content:center;}
+        .elButton.loading .main{opacity:0;}
+        .elButton.loading .sub{opacity:0;}
+        .elButton.loading .fa-spin{opacity:1;display:block;}
+
+
+        .rm-dashboard-container {max-width:1170px;font-family:'Open Sans', sans-serif !important; -webkit-font-smoothing:antialiased;}
+        .box-title {font-size: 28px;font-weight: 700;color: #d6be60; margin-bottom: 16px;position:relative;}
+        .box-title.has-underline:after {content:'';position:absolute;width:40px;height:3px;background:#d6be60;bottom:-6px;left:15px;}
+        .box-sub-title {font-size: 18px; color: white; margin-bottom: 16px;}
+        .h-1 {background:#d6be60;margin:40px 0px}
+        .carousel-control{top:0;bottom:unset;text-shadow:unset;cursor:pointer;display:flex;justify-content:center;align-items:center;}
+        .carousel-control.left {background:unset;}
+        .carousel-control.left span{color:black;text-shadow:unset;font-size:48px;}
+        .carousel-control.right {background:unset;}
+        .carousel-control.right span{color:black;text-shadow:unset;font-size:48px;}
+
+        .product-box {margin-bottom: 32px;}
+        .product-box .products {padding: 0px 60px;}
+        .product-box .products .lslide {display:flex;justify-content:center;}
+        .product-box .products .carousel-control{height:250px;}
+        .product-box .products .product {display:flex;max-width:200px;min-height:300px;margin: 10px; position: relative;color:white;}
+        .product-box .products .product .product-inner { flex-direction: column;display: flex;max-width: 100%;flex: 1 1 auto;position:relative;}
+        .product-box .products .product a { display: flex;}
+        .product-box .products .product a .image {display: flex;position:relative;}
+        .product-box .products .product a .image img {flex: 1 1 auto;width:200px;height:250px;object-fit: cover;border-radius: 4px;}
+        .product-box .products .product a .image .image-label {position: absolute;width: 100%;bottom: 0px;background: #19232d;opacity: 0.85;color: white;font-size: 13px;font-weight: bold;padding: 10px;border-radius: 0px 0px 4px 4px;}
+        .product-box .products .product a .image .image-label::before {display: inline-block;font-family: FontAwesome;font-style: normal;font-weight: normal;font-size: 15px;line-height: 0.9;content: "\f07a";margin-right: 10px;}
+        .product-box .products .product a:hover .image .image-label {background:#E72E2A;transition: all 0.3s ease;}
+        .product-box .products .product .entries {position:absolute;top:0;left:0;font-size: 13px;font-weight: bold;width: 67px;border-radius: 3px 0px 3px 0px;color: white;background: #E72E2A;display:flex;flex-direction:column;}
+        .product-box .products .product .entries .number {font-size: 18px;margin-bottom: -5px;display: block;}
+        .product-box .products .product .name {text-align: left;padding-left: 12px;font-size: 15px;font-weight: bold;margin-top: 12px;margin-bottom: 7px;}
+        .product-box .products .product .name::before {    content: " ";display: block;float: left;position: absolute;left: 0;margin-top: 2px;height: 18px;border-left: 3px solid #e54e53;}
+        .product-box .products .product .price {text-align: left;font-size: 14px;padding-left: 12px;}
+        .product-box .products-placeholder {min-height: 200px;align-items: center;justify-content: center;display: flex;}
+
+        .recent-articles .carousel-control{height:100%;}
+        .recent-articles .recent-aritcle {height:192px;position:relative;}
+        .recent-articles .recent-aritcle a {max-width:100%;}
+        .recent-articles .recent-aritcle img {width:100%;height:100%;object-fit:cover;}
+        .recent-articles .recent-aritcle .caption{position:absolute;bottom:0;width:100%;padding:5px;background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…IgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);background: -webkit-linear-gradient(top, rgba(25,35,45,0) 0%,rgba(0,0,0,0.8) 100%);background: linear-gradient(to bottom, rgba(25,35,45,0) 0%,rgba(0,0,0,0.8) 100%);text-shadow: 0px 1px 1px #000;color:white;}
+        .recent-articles .recent-aritcle .caption .the-date{font-size:8px;}
+        .recent-articles .recent-aritcle .caption .title{font-size:12px;}
+        .recent-articles .recent-articles-placeholder {min-height: 192px;align-items: center;justify-content: center;display: flex;}
+        .recent-articles .recent-articles-placeholder .loading {font-size:32px;}
+
+        .gray{color:#444}
+        .no-margin {margin: 0px;}
+        .no-padding {padding: 0px;}
+
+        @media screen and (max-width: 600px) {
+            .box-title {font-size: 22px;}
+            .box-sub-title {font-size: 16px; color: #444; margin-bottom: 16px;}
+            .product-box .products {padding:0px 40px;}
+            .product-box .products .carousel-control{height:210px;}
+            .product-box .products .product {max-width:160px;min-height:240px;}
+            .product-box .products .product a .image img {width:160px;height:190px;}
+            .product-box .products .product a .image .image-label {font-size:11px;}
+            .product-box .products .product .name {font-size:12px;}
+            .product-box .products .product .price {font-size:11px;}
+            .product-box .products .product .entries {font-size:11px}
+            .product-box .products .product .entries .number {font-size: 16px;}
+        }
+
+        @media screen and (max-width: 500px) {
+            .vip-title {font-size:20px;}
+            .box-title {font-size: 22px;}
+            .box-sub-title {font-size: 16px; color: #444; margin-bottom: 16px;}
+            .product-box .products {padding:0px 20px;}
+            .product-box .products .carousel-control{height:190px;}
+            .product-box .products .product {max-width:140px;min-height:210px;}
+            .product-box .products .product a .image img {width:140px;height:170px;}
+            .product-box .products .product a .image .image-label {font-size:10px;}
+            .product-box .products .product .name {font-size:10px;}
+            .product-box .products .product .price {font-size:9px;}
+            .product-box .products .product .entries {font-size:9px}
+            .product-box .products .product .entries .number {font-size: 14px;}
+        }
+
+        @media screen and (max-width: 400px) {
+            .rm-dashboard-container {width:100%}
+            .box-title {font-size: 18px;}
+            .box-sub-title {font-size: 14px; color: #444; margin-bottom: 16px;}
+            .product-box .products {padding:0px 20px;}
+            .product-box .products .carousel-control{height:160px;}
+            .product-box .products .product {max-width:120px;min-height:180px;}
+            .product-box .products .product a .image img {width:120px;height:140px;}
+            .product-box .products .product a .image .image-label {font-size:8px;}
+            .product-box .products .product .name {font-size:8px;}
+            .product-box .products .product .price {font-size:8px;}
+            .product-box .products .product .entries span{font-size:8px;margin-bottom:2px}
+            .product-box .products .product .entries span.number {font-size: 13px;}
+        }
+
+    </style>
+    <div class="rm-dashboard-container">
+
+        <div class="row" style="margin-top:32px;">
+            <div class="text-left col-xs-12 col-sm-7 col-md-8" style="padding-top:10px;padding-bottom:10px;">
+                <div class="vip-title"><b>Welcome To RestoMods Car Club</b> - Home of True Enthusiasts</div>
+                <div class="vip-desc no-margin">
+                {% if is_premium %}
+                <b>Thank you for signing up, and welcome. As a Premium member you receive perks beyond just your entries into the sweepstakes. Check out the below for exclusive content, discount codes.</b>
+                {% else %}
+                <b>Thank you for signing up. In order to receive perks beyond your entries, please upgrade your membership.</b>
+                {% endif %}
+                </div>
+                {% if settings.sweepstakesCopy  %}
+                <div class="row" style="margin-top:10px">
+                    <div class="col-md-12">
+                        {{ settings.sweepstakesCopy|raw }}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-xs-12 col-sm-5 col-md-4 count-down-container" style="padding-top:10px;padding-bottom:10px;">
+                <div class="count-down">
+                    {% if sweepstakes.id == 4 %}
+                    <div class="title text-center strong">'65 Countdown</div>
+                    {% elseif sweepstakes.id == 3 %}
+                    <div class="title text-center strong">'57 Countdown</div>
+                    {% else %}
+                    <div class="title text-center strong" style="padding: 0px 10px">{{sweepstakes.carName}}</div>
+                    <div class="text-center">
+                        <span class="title" style="color:rgb(7, 190, 28);">{{sweepstakes_user_points}} of {{sweepstakes.sweepstakesLimit}} Entries</span>
+                    </div>
+                    <div class="title text-center strong" style="padding: 0px 10px">Countdown</div>
+                    {% endif %}
+
+
+                    <div class="row timer text-center no-margin strong" id="countdown-timer">
+                        <div class="days">00</div>
+                        <div class="hours">00</div>
+                        <div class="minutes">00</div>
+                        <div class="seconds">00</div>
+                    </div>
+                    <div class="row unit text-center no-margin" id="countdown-timer-unit">
+                        <div class="days">DAYS</div>
+                        <div class="">HOURS</div>
+                        <div class="">MINUTES</div>
+                        <div class="">SECONDS</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="h-1"></div>
+
+        {% include "@ApplicationSonataUser/Profile/dashboard_products.html.twig"  %}
+
+        <div class="h-1"></div>
+
+        {% include "@ApplicationSonataUser/Profile/dashboard_coupons.html.twig"  %}
+
+        <div style="height:100px"></div>
+    </div>
+
+{% endblock %}
+
+{% block extra_javascripts %}
+    <script type="text/javascript">
+        jQuery(function ($) {
+            setupCountDown({{ sweepstakes.endDate.timestamp * 1000}});
+            loadProductsSlider();
+        });
+    </script>
+    <script src="{{ asset('js/dashboard.js') }}"></script>
+    <script src="{{ asset('js/masonry.pkgd.min.js') }}"></script>
+    <script src="{{ asset('js/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('js/profile.script.js') }}"></script>
+    <script src="{{ asset('js/lightslider.js') }}"></script>
+{% endblock extra_javascripts %}

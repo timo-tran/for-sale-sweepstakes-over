@@ -1,0 +1,62 @@
+    <div class="">
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="entrant">
+            {% if error is not null %}
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            {{ error }}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+            <div id="form-errors" class="alert alert-danger hide alert-dismissable" style="margin-top:20px;">
+                <span></span>
+            </div>
+            {{ form_start(form, {'attr': {'id': 'form_profile'}}) }}
+                {% set entrant_fields1 = ['full_name', 'email', 'phone'] %}
+                {% set entrant_fields2 = ['address', 'city', 'state', 'zip'] %}
+                {% for element in entrant_fields1 %}
+                <div class="input-container">
+                    {{ form_widget(attribute(form, element)) }}
+                </div>
+                {% endfor %}
+                <div class="divider flex layout-row center">
+                    <span>PRIZE DELIVERY ADDRESS</span>
+                    <div class="h-1 flex-auto"></div>
+                </div>
+                <div class="input-container">
+                    {{ form_widget(attribute(form, 'country')) }}
+                </div>
+                <div class="input-container">
+                    {{ form_widget(attribute(form, 'address')) }}
+                </div>
+                <div class="input-container">
+                    {{ form_widget(attribute(form, 'city')) }}
+                </div>
+                <div class="input-container col-sm-7">
+                    {{ form_widget(attribute(form, 'state')) }}
+                </div>
+                <div class="input-container col-sm-4 col-sm-offset-1">
+                    {{ form_widget(attribute(form, 'zip')) }}
+                </div>
+                <a id="sweepstakes_order_entrant_action" class="elButton red large" style="margin-top: 20px;">
+                    <span class="main">Claim Your Entries To WIN</span>
+                    <div class="loading">
+                        <span class="processing">Processing...&nbsp;</span><i class="fa fa-spinner fa-spin"></i>
+                    </div>
+                </a>
+            {{ form_row(form._token) }}
+            {{ form_end(form, {'render_rest': false}) }}
+            </div>
+        </div>
+
+        <div class="text-center">
+            View our <a href="https://crushxo.com/pages/privacy-policy">Privacy Policy</a> | <a data-toggle="modal" data-target="#official-rules">Official Rules</a>
+        </div>
+        <div class="text-center">
+            Winner selected by <a href="#">independent third party administrator</a>
+        </div>
+    </div>

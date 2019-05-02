@@ -1,0 +1,375 @@
+.dark-gray{color:#2f2f2f;}
+.light-gray{color:#9c9c9c;}
+.light-gray-bg{background:#F4F4F4;}
+.h-1{height:1px;background:#e2e7e8;}
+.discount-partners{margin:10px 0px 20px 0px;}
+.discount-partners img{max-width:16%;object-fit:contain;padding:10px 10px;}
+body.sweepstakes .count-down.large .unit{color:rgba(255, 255, 255, 0.4);}
+div.winner{padding:20px 30px;}
+.nav_bar .flag{width:46px;height:33px;background:url(https://d2q2bkkwoz3pe2.cloudfront.net/images/sprites1.png) -173px -95px;}
+@media screen and (max-width:767px){a.elButton{font-size:14px;}
+.discount-partners img{max-width:50%;max-height:100px}
+.inputs-board{padding-top:10px;}
+div.winner{padding:20px 10px;}
+}
+@media screen and (max-width:400px){div.winner{padding:20px 0px;}
+}
+.red{color:#E72F2A;}
+.yellow{color:#FFFA7C;}
+.nav_bar{min-height:53px;background:#F11610;padding:5px 5px;}
+.nav_bar span{text-transform:uppercase;text-align:center;font-size:16pt;font-weight:700;text-shadow:0 0 3px #760401;}
+body.sweepstakes h1, h2, h3, h4{margin-bottom:0.5rem;margin-top:unset;}
+body.sweepstakes .top-section{background:#FFF;background-repeat:no-repeat;background-image:url(https://d2q2bkkwoz3pe2.cloudfront.net/images/background.jpg);background-position:center -175px;background-size:cover;}
+body.sweepstakes .top-section .logo-wrapper{margin-top:40px;}
+body.sweepstakes .top-section .logo-wrapper .divider{margin-top:24px;}
+body.sweepstakes .top-section .man{position:absolute;z-index:1;}
+body.sweepstakes .top-section .banner{margin-top:25px;margin-left:150px;}
+body.sweepstakes .top-section .banner .ask{font-size:22pt;font-weight:300;}
+body.sweepstakes .top-section .banner .prize{font-size:40px;text-transform:uppercase;font-weight:900;line-height:1.1em;margin-top:10px;max-width:950px;}
+body.sweepstakes .top-section .left-panel{padding-top:80px;min-width:0px;}
+body.sweepstakes .top-section .left-panel .saying{font-size:40px;font-weight:900;line-height:1.1em;color:white;background-image:url(https://d2q2bkkwoz3pe2.cloudfront.net/images/text_bg.png);background-repeat:no-repeat;padding:20px 0px 20px 325px;}
+body.sweepstakes .top-section .left-panel .video-wrapper{z-index:1}
+body.sweepstakes .top-section .left-panel .video-wrapper > div{background:white;padding:4px;}
+body.sweepstakes .top-section .feedback-section{background:url(https://d2q2bkkwoz3pe2.cloudfront.net/images/feedback_wrapper_bg.jpg);background-size:cover !important;padding:40px 0px;}
+body.sweepstakes .top-section .feedback-section .feedback-wrapper{justify-content:center;min-width:0px;flex:1;-webkit-flex:1;-webkit-box-flex:1;-webkit-flex-basis:auto;position:relative;padding-top:15px;padding-bottom:15px;}
+body.sweepstakes .top-section .feedback-section .feedback-wrapper .feedback{position:relative;padding:20px;border:3px solid #fff;background-color:rgba(0, 0, 0, 0.4);}
+body.sweepstakes .top-section .feedback-section .feedback-wrapper .feedback h2{font-weight:700;font-size:13pt;color:#fff;text-transform:uppercase;margin-left:85px;margin-top:unset !important;margin-bottom:0.5rem !important;}
+body.sweepstakes .top-section .feedback-section .feedback-wrapper .feedback h2 span{color:#fffa7c;}
+body.sweepstakes .top-section .feedback-section .feedback-wrapper .feedback p{font-weight:400;font-size:11pt;color:#fff;margin:0 0 0 85px;}
+body.sweepstakes .top-section .feedback-section .feedback-wrapper .feedback .quote{position:absolute;left:50px;top:-10px;z-index:1;}
+body.sweepstakes .top-section .feedback-section .feedback-wrapper .feedback .bg-quote{width:35px;height:26px;background:url(https://d2q2bkkwoz3pe2.cloudfront.net/images/sprites1.png) -63px -240px;}
+body.sweepstakes .top-section .feedback-section .feedback-wrapper .feedback .border-break{position:absolute;left:44px;top:-3px;z-index:0;}
+body.sweepstakes .top-section .feedback-section .feedback-wrapper .feedback .bg-border_break{width:44px;height:3px;background:url(https://d2q2bkkwoz3pe2.cloudfront.net/images/sprites1.png) -251px -202px;}
+body.sweepstakes .top-section .feedback-section .feedback-wrapper .feedback .keys{position:absolute;left:0;top:10px;z-index:1;}
+body.sweepstakes .top-section .feedback-section .feedback-wrapper .feedback .bg-keys{width:72px;height:146px;background:url(https://d2q2bkkwoz3pe2.cloudfront.net/images/sprites1.png) -10px -10px;}
+body.sweepstakes .top-section .feedback-section .fb-page-wrapper{max-width:100%;overflow:hidden;justify-content:center;padding-top:15px;padding-bottom:15px;}
+body.sweepstakes .top-section .nav-tabs-wrapper{background-image:url(https://d2q2bkkwoz3pe2.cloudfront.net/images/inputs_board_step_bg.png);background-repeat:no-repeat;background-size:cover;background-position:bottom;border-top-left-radius:9px;border-top-right-radius:9px;width:calc(100% + 2px);margin-left:-1px;margin-top:-1px;min-height:124px;padding-bottom:20px;clip-path:polygon(0 0,100% 0, 100% calc(100% - 20px), 50% 100%, 0 calc(100% - 20px));-webkit-clip-path:polygon(0 0,100% 0, 100% calc(100% - 20px), 50% 100%, 0 calc(100% - 20px));}
+body.sweepstakes .top-section .nav-tabs-wrapper .alert{margin-bottom:0px;}
+body.sweepstakes .top-section .nav-tabs-wrapper .text-large{font-size:35px;font-weight:700;color:#FFFA7C;line-height:1em;text-shadow:0 0 12px #4e0302;}
+body.sweepstakes .top-section .nav-tabs-wrapper .text-small{font-size:16px;color:white;}
+body.sweepstakes .top-section .nav-tabs{border:unset;display:flex;align-items:center;justify-content:center;}
+body.sweepstakes .top-section .nav-tabs li:first-child::before{background:#FFF;content:'';width:33px;height:4px;position:absolute;top:calc(50% - 2px);left:calc(50% + 12px);}
+body.sweepstakes .top-section .nav-tabs li.disabled{pointer-events:none;}
+body.sweepstakes .top-section .nav-tabs li>a{background:unset !important;border:unset !important;color:rgb(47, 47, 47);}
+body.sweepstakes .top-section .nav-tabs li>a .number{font-size:16px;width:28px;height:28px;text-align:center;line-height:24px;border-radius:14px;background:transparent;color:white;border:3px solid white;padding-right:unset;}
+body.sweepstakes .top-section .nav-tabs li.active> a .number{background:#000;}
+body.sweepstakes .top-section .nav-tabs li:not(.active)> a > div{opacity:1;}
+body.sweepstakes .top-section .nav-tabs li.active>a::after{color:#fff;font-family:'FontAwesome';position:absolute;right:50%;font-size:9px;top:-5px;left:27px;content:'\f04b';-webkit-transform:rotate(90deg);-moz-transform:rotate(90deg);-o-transform:rotate(90deg);-ms-transform:rotate(90deg);transform:rotate(90deg);}
+body.sweepstakes .top-section .tab-pane{padding:20px;}
+body.sweepstakes .top-section .tab-pane .input-container{padding:10px 0px;}
+body.sweepstakes .top-section .tab-pane .input-container .form-control{height:39px;}
+body.sweepstakes .top-section .tab-pane .input-container .form-control.is-invalid{border-color:#E43B2C;}
+body.sweepstakes .top-section .tab-pane .control-label{font-size:12px;}
+body.sweepstakes .top-section .tab-pane .divider{padding:0px;}
+body.sweepstakes .top-section .tab-pane .divider span{font-size:16px;color:#990300;}
+body.sweepstakes .top-section .tab-pane .card-form{margin-top:20px;border:2px solid #ddd;padding:15px;border-radius:4px;background-color:rgba(221,221,221,0.18);}
+body.sweepstakes .top-section .tab-pane .tbl-header{font-weight:bold;line-height:32px;border-bottom:1px solid #e2e7e8;padding-top:10px;}
+body.sweepstakes .top-section .tab-pane .order-items{padding:5px 0px;}
+body.sweepstakes .top-section .tab-pane .button-wrapper{margin-top:10px;display:inline-block;}
+body.sweepstakes .top-section .inputs-board{padding:80px 10px 0px 10px;}
+body.sweepstakes .top-section .inputs-board .panel{border:8px solid #990300;background:#FFF;border-radius:15px;}
+body.sweepstakes .top-section .inputs-board .panel a:not(.elButton){color:#e72f2a;}
+body.sweepstakes .count-down-container{margin-top:30px;background-image:url(https://d2q2bkkwoz3pe2.cloudfront.net/images/ticket.png);background-size:contain;height:143px;}
+body.sweepstakes .count-down-container > span.heading{font-size:25px;font-weight:900;width:62px;line-height:1.1em;color:#990300;margin-left:20px;}
+body.sweepstakes .count-down-container > i{font-size:50px;color:#990300;margin-left:20px;}
+body.sweepstakes .count-down-container .count-down.large .timer div{max-width:64px;min-width:64px;font-size:38px;font-weight:900;background:#313131;border:4px solid #DBDBDB;border-radius:10px;margin:0px 10px;padding-bottom:11px;line-height:1.2em;color:white;}
+body.sweepstakes .count-down-container .count-down.large .unit{position:absolute;top:42px;color:white;margin-top:0px !important;}
+body.sweepstakes .count-down-container .count-down.large .unit div{max-width:64px;min-width:64px;margin:0px 10px;font-size:10px;}
+body.sweepstakes .count-down-container .count-down.large .timer div:not(:last-child)::after{right:-19px;color:#313131;}
+body.sweepstakes .count-down-container > .message{margin-left:20px;}
+body.sweepstakes .count-down-container > .message .hurry{font-size:35px;color:white;line-height:1em;font-weight:900;}
+body.sweepstakes .count-down-container > .message .enter{font-size:30px;color:#FFFA7C;line-height:1em;font-weight:900;}
+body.sweepstakes .count-down-container-closed{display:none;margin-top:30px;background-image:url(https://d2q2bkkwoz3pe2.cloudfront.net/images/ticket_closed.jpg);height:143px;}
+body.sweepstakes .count-down-container-closed span{font-size:25px;color:#990300;font-weight:900;}
+body.sweepstakes .spec-section{background:white url(https://d2q2bkkwoz3pe2.cloudfront.net/images/background_white_pattern.jpg) no-repeat;background-size:cover;}
+body.sweepstakes .spec-section .header h3{text-align:center;font-size:36pt;font-weight:900;color:#E72F2A;line-height:1.2em;}
+body.sweepstakes .spec-section .header h2{text-align:center;color:#20211F;font-size:30pt;font-weight:900;}
+body.sweepstakes .spec-section .divider{margin-top:21px;margin-bottom:20px;}
+body.sweepstakes .spec-section .features{flex-direction:row;}
+body.sweepstakes .spec-section .features ul{color:#20211F;font-size:18px;font-weight:700;list-style:none;margin:0px;padding:0px;}
+body.sweepstakes .spec-section .features ul.right{text-align:right;}
+body.sweepstakes .spec-section .features ul.left li{margin:35px 0px;padding-left:60px;position:relative;}
+body.sweepstakes .spec-section .features ul.right li{margin:35px 0px;padding-right:60px;position:relative;}
+body.sweepstakes .spec-section .features ul li:before{content:' ';width:51px;height:55px;background:url(https://d2q2bkkwoz3pe2.cloudfront.net/images/sprites1.png) -102px -95px;position:absolute;left:0;}
+body.sweepstakes .spec-section .features ul.right li:before{right:0;left:unset;}
+body.sweepstakes .proof-section{background-size:cover !important;}
+body.sweepstakes .proof-section.sweepstakes4{background:url(https://d2q2bkkwoz3pe2.cloudfront.net/thumbnails/proof_bg2.jpg) no-repeat;background-size:cover !important;}
+body.sweepstakes .proof-section .winner.even{display:flex;flex-direction:row-reverse;margin-top:20px}
+body.sweepstakes .proof-section .winner.odd{display:flex;flex-direction:row;margin-top:20px}
+body.sweepstakes .proof-section .header h2{color:white;font-size:38pt;font-weight:900;text-transform:uppercase;text-align:center;}
+body.sweepstakes .proof-section .header h3{color:#FFFA7C;font-size:22pt;font-weight:900;text-transform:uppercase;text-align:center;}
+body.sweepstakes .proof-section .divider{margin-top:20px;margin-bottom:0px;width:100%;}
+body.sweepstakes .proof-section .details{}
+body.sweepstakes .proof-section .details .name{color:white;font-size:15pt;background:#20211F;padding:10px 20px;}
+body.sweepstakes .proof-section .details .review{color:white;font-size:20pt;margin-top:20px;line-height:1.2em;}
+body.sweepstakes .proof-section .details .text{color:white;font-size:14pt;margin-top:20px;line-height:1.2em;text-align:justify;}
+body.sweepstakes .proof-section .video-wrapper{background:white;padding:4px;box-shadow:0 0 20px rgba(0, 0, 0, .5);}
+body.sweepstakes .benefits-section.sweepstakes4{background:url(https://d2q2bkkwoz3pe2.cloudfront.net/thumbnails/benefits_bg.jpg) no-repeat;background-size:100% 100% !important;-webkit-background-size:100% 100% !important;background-repeat:no-repeat !important;padding-top:20px;}
+body.sweepstakes .benefits-section .header{padding-top:20px;padding-bottom:20px;}
+body.sweepstakes .benefits-section .header h2{color:#20211F;font-size:50px;font-weight:900;text-transform:uppercase;text-align:center;}
+body.sweepstakes .benefits-section .header h3{color:#E72F2A;font-size:30px;font-weight:900;text-transform:uppercase;text-align:center;max-width:1114px;}
+body.sweepstakes .benefits-section .divider{margin-top:20px;width:100%;}
+body.sweepstakes .benefits-section ul{list-style:none;margin:0px;padding:0px;font-size:14pt;}
+body.sweepstakes .benefits-section ul li{margin:1em 0px;padding-left:2.4em;}
+body.sweepstakes .benefits-section ul li p{font-weight:400;line-height:1.2;}
+body.sweepstakes .benefits-section ul li p span{font-weight:700;color:#990300;}
+body.sweepstakes .benefits-section ul li:before{color:#990300;font-size:32px;font-family:'FontAwesome';content:'\f00c';position:absolute;margin-top:0.05em;margin-left:-1.4em;}
+body.sweepstakes .benefits-section .text-box{font-size:14pt;margin:1em 0px;}
+body.sweepstakes .benefits-section .text-box span{font-weight:700;color:#990300;}
+body.sweepstakes .benefits-section .right-side{margin:20px;}
+body.sweepstakes .featured-partners-section{background:url(https://d2q2bkkwoz3pe2.cloudfront.net/thumbnails/sec6-bg.jpg) no-repeat;background-size:cover !important;margin-top:20px;}
+body.sweepstakes .featured-partners-section .header{color:#FFF;font-size:30px;text-transform:uppercase;text-align:center;}
+body.sweepstakes .featured-partners-section .partner-logo{margin:10px;}
+body.sweepstakes .featured-partners-section .partner-logo.logo1{width:172px;height:23px;background:url(https://d2q2bkkwoz3pe2.cloudfront.net/images/sprites1.png) -251px -122px;}
+body.sweepstakes .featured-partners-section .partner-logo.logo2{width:129px;height:65px;background:url(https://d2q2bkkwoz3pe2.cloudfront.net/images/sprites1.png) -102px -10px;}
+body.sweepstakes .featured-partners-section .partner-logo.logo3{width:172px;height:17px;background:url(https://d2q2bkkwoz3pe2.cloudfront.net/images/sprites1.png) -251px -165px;}
+body.sweepstakes .featured-partners-section .partner-logo.logo4{width:172px;height:32px;background:url(https://d2q2bkkwoz3pe2.cloudfront.net/images/sprites1.png) -251px -70px;}
+body.sweepstakes .featured-partners-section .partner-logo.logo5{width:172px;height:40px;background:url(https://d2q2bkkwoz3pe2.cloudfront.net/images/sprites1.png) -251px -10px;}
+body.sweepstakes .featured-partners-section .partner-logo.logo6{width:172px;height:44px;background:url(https://d2q2bkkwoz3pe2.cloudfront.net/images/sprites1.png) -10px -176px;}
+body.sweepstakes .extra-section{background:url(https://d2q2bkkwoz3pe2.cloudfront.net/thumbnails/sec7-bg.jpg) no-repeat;background-size:cover !important;padding-top:20px;}
+body.sweepstakes .extra-section .header h2{text-align:center;font-size:36pt;font-weight:900;color:#E72F2A;line-height:1.2em;}
+body.sweepstakes .extra-section .header h3{text-align:center;color:#20211F;font-size:30pt;font-weight:900;}
+body.sweepstakes .extra-section .divider{margin-top:21px;margin-bottom:20px;}
+body.sweepstakes .extra-section .information{margin-bottom:10px;}
+body.sweepstakes .extra-section .text-box h2{font-weight:900;font-size:32px;color:#e72f2a;text-transform:uppercase;text-align:left;line-height:1;}
+body.sweepstakes .extra-section .text-box p{font-size:20px;font-weight:400;line-height:1.4;color:#000;margin:0 0 20px;}
+body.sweepstakes .section-8{margin-top:20px;padding:90px 0 50px;background:url(https://d2q2bkkwoz3pe2.cloudfront.net/thumbnails/sec8_bg.png) no-repeat;background-size:cover !important;background-position:top center;}
+body.sweepstakes .section-8 button[type="submit"]{border:none;}
+body.sweepstakes .faq-section .header{text-align:center;font-size:50px;font-weight:900;color:#E72F2A;line-height:1.2em;}
+body.sweepstakes .faq-section .header small{text-align:center;color:#20211F;font-size:40px;font-weight:900;}
+body.sweepstakes .faq-section .divider{margin-top:21px;margin-bottom:20px;}
+body.sweepstakes .faq-section{background:url(https://d2q2bkkwoz3pe2.cloudfront.net/thumbnails/sec9-bg.jpg) no-repeat;background-size:cover !important;background-position:bottom center;}
+body.sweepstakes .faq-section nav.faqs{border-radius:4px;background-color:rgb(242, 242, 242);}
+body.sweepstakes .faq-section .faq{padding:16px 0px;margin:0px 16px;position:relative;}
+body.sweepstakes .faq-section .faq:not(:last-child){border-bottom:1px solid #e2e7e8;}
+body.sweepstakes .faq-section .faq > .question{text-decoration:none !important;}
+body.sweepstakes .faq-section .faq > .question > div{min-height:40px;padding:8px 12px;cursor:pointer;color:rgb(96, 96, 96);font-size:20px;}
+body.sweepstakes .faq-section .faq > .question[aria-expanded='false'] > div{}
+body.sweepstakes .faq-section .faq .answer div{font-size:14px;color:rgb(96, 96, 96);padding:20px 28px;}
+body.sweepstakes .sponsors-section{padding:90px 0 50px;margin-top:20px;background:url(https://d2q2bkkwoz3pe2.cloudfront.net/thumbnails/sec10-bg.jpg) no-repeat;background-size:cover !important;background-position:top center;}
+body.sweepstakes .sponsors-section .row{margin:auto;display:flex;align-items:center;}
+body.sweepstakes .sponsors-section button[type="submit"]{border:none;max-width:100%;flex:1 1 auto;margin:0px 30px;}
+body.sweepstakes .sponsors-section .secured-logos{width:258px;height:34px;background:url(https://d2q2bkkwoz3pe2.cloudfront.net/images/new-imgs.png) -10px -434px;display:block;}
+body.sweepstakes .sponsors-section .small-logos{width:237px;height:34px;background:url(https://d2q2bkkwoz3pe2.cloudfront.net/images/new-imgs.png) -288px -434px;display:block;}
+body.sweepstakes .sponsors-section .trust-hide{display:none;}
+body.sweepstakes .footer-section{font-size:13pt;}
+body.sweepstakes .footer-section a{color:#e72f2a;}
+body.sweepstakes button[type="submit"]{padding:20px 10px;background:#fff005;background:-moz-linear-gradient(top, #fff005 0%, #ff9951 55%, #ed5900 99%);background:-webkit-linear-gradient(top, #fff005 0%,#ff9951 55%,#ed5900 99%);background:linear-gradient(to bottom, #fff005 0%,#ff9951 55%,#ed5900 99%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff005', endColorstr='#ed5900',GradientType=0);border:1px solid #d9d9d9;border-radius:5px;transition:all .5s ease-in-out;-webkit-transition:all .5s ease-in-out;-moz-transition:all .5s ease-in-out;}
+body.sweepstakes button[type="submit"].round{border-radius:15px;}
+body.sweepstakes button[type="submit"] p{font-family:'Oswald', sans-serif;font-size:24pt;font-weight:700;text-transform:uppercase;margin-bottom:0;line-height:.7;color:#000;text-shadow:0 1px 0 rgba(255, 255, 255, .7);position:relative;}
+body.sweepstakes button[type="submit"] p small{font-size:12pt;font-weight:700;font-family:'Roboto', sans-serif;}
+@media screen and (min-width:1601px){.top-section{background-size:100% 1267px;}
+}
+@media screen and (max-width:1199px){.nav_bar span{font-size:18px;}
+.contentInner{max-width:960px;margin:auto;}
+body.sweepstakes .top-section{background-position:center -152px;background-size:cover;}
+body.sweepstakes .top-section .man{max-width:300px;}
+body.sweepstakes .top-section .banner{margin-top:20px;margin-left:150px;}
+body.sweepstakes .top-section .banner .ask{font-size:24px;}
+body.sweepstakes .top-section .banner .prize{font-size:32px;margin-top:12px;max-width:760px;}
+body.sweepstakes .top-section .left-panel{padding-top:40px;}
+body.sweepstakes .top-section .left-panel .saying{font-size:35px;line-height:1.1em;color:white;margin-left:35px;padding:10px 0px 10px 208px;background-size:500px 98px}
+body.sweepstakes .top-section .nav-tabs-wrapper{min-height:105px;}
+body.sweepstakes .top-section .nav-tabs-wrapper .text-large{font-size:28px;}
+body.sweepstakes .top-section .nav-tabs-wrapper .text-small{font-size:12px;}
+body.sweepstakes .top-section .inputs-board{padding-top:40px;}
+body.sweepstakes .top-section .inputs-board .cards_n_logs{max-width:278px;}
+body.sweepstakes .top-section .tab-pane .input-container{padding:5px 0px;}
+body.sweepstakes .top-section .tab-pane .button-wrapper{margin-top:5px;}
+body.sweepstakes .top-section .tab-pane .input-container .form-control{height:32px;}
+body.sweepstakes .count-down-container{margin-top:30px;height:113px;}
+body.sweepstakes .count-down-container-closed{margin-top:30px;background-size:540px 113px;height:113px;}
+body.sweepstakes .count-down-container > span.heading{font-size:18px;width:62px;line-height:1.1em;color:#990300;margin-left:10px;}
+body.sweepstakes .count-down-container > i{font-size:50px;color:#990300;margin-left:10px;}
+body.sweepstakes .count-down-container .count-down.large .timer div{max-width:54px;min-width:54px;font-size:30px;border:4px solid #DBDBDB;border-radius:10px;margin:0px 7px;padding-bottom:11px;}
+body.sweepstakes .count-down-container .count-down.large .unit div{max-width:54px;min-width:54px;margin:0px 7px;font-size:10px;}
+body.sweepstakes .count-down-container .count-down.large .unit{top:34px;}
+body.sweepstakes .count-down-container .count-down.large .timer div:not(:last-child)::after{right:-15px;top:0px;}
+body.sweepstakes .count-down-container > .message .hurry{font-size:28px;}
+body.sweepstakes .count-down-container > .message .enter{font-size:24px;}
+body.sweepstakes .count-down-container-closed span{font-size:18px;}
+body.sweepstakes .top-section .feedback-section .feedback-wrapper .feedback{padding:25px 20px;}
+body.sweepstakes .top-section .feedback-section .feedback-wrapper .feedback h2{font-size:16px;margin-left:70px;}
+body.sweepstakes .top-section .feedback-section .feedback-wrapper .feedback p{font-size:13px;margin-left:70px;}
+body.sweepstakes .spec-section .header h3{font-size:40px;}
+body.sweepstakes .spec-section .header h2{font-size:30px;}
+body.sweepstakes .spec-section .features img{max-width:500px;}
+body.sweepstakes .proof-section .header h2{color:white;font-size:40px;text-transform:uppercase;}
+body.sweepstakes .proof-section .header h3{color:#FFFA7C;font-size:30px;text-transform:uppercase;text-align:center;max-width:710px;}
+body.sweepstakes .proof-section .details .name{font-size:15pt;}
+body.sweepstakes .proof-section .details .review{font-size:20pt;}
+body.sweepstakes .proof-section .details .text{font-size:14pt;}
+body.sweepstakes .featured-partners-section .partner-logo{zoom:0.79;-moz-transform:scale(0.79);}
+body.sweepstakes .benefits-section .header h2{font-size:40px;}
+body.sweepstakes .benefits-section .header h3{font-size:30px;}
+body.sweepstakes .extra-section .header h2{font-size:32pt;}
+body.sweepstakes .extra-section .header h3{font-size:28pt;}
+body.sweepstakes .extra-section .text-box h2{font-size:25px;}
+body.sweepstakes .extra-section .text-box p{font-size:16px;}
+body.sweepstakes .faq-section .header{font-size:40px;}
+body.sweepstakes .faq-section .header small{font-size:30px;}
+}
+@media screen and (max-width:959px){//ipad
+.nav_bar span{font-size:15px;}
+.nav_bar .flag{zoom:0.75;-moz-transform:scale(0.75);}
+.contentInner{max-width:768px;margin:auto;}
+body.sweepstakes .top-section{background-position:center -216px;background-size:cover;}
+body.sweepstakes .top-section .logo-wrapper{margin-top:25px;}
+body.sweepstakes .top-section .logo-wrapper .logo{max-width:331px;}
+body.sweepstakes .top-section .logo-wrapper .divider{max-width:378px;}
+body.sweepstakes .top-section .logo-wrapper .divider{margin-top:21px;}
+body.sweepstakes .top-section .man{max-width:248px;}
+body.sweepstakes .top-section .banner{margin-top:10px;margin-left:112px;}
+body.sweepstakes .top-section .banner .ask{font-size:19px;}
+body.sweepstakes .top-section .banner .prize{font-size:26px;margin-top:10px;max-width:620px}
+body.sweepstakes .top-section .left-panel{padding:50px 5px 0px 5px;}
+body.sweepstakes .top-section .left-panel .saying{font-size:26px;line-height:1.1em;color:white;margin-left:0px;padding:10px 0px 10px 216px;background-size:440px 85px}
+body.sweepstakes .top-section .nav-tabs-wrapper{min-height:81px;}
+body.sweepstakes .top-section .nav-tabs-wrapper .text-large{font-size:22px;}
+body.sweepstakes .top-section .nav-tabs-wrapper .text-small{font-size:12px;}
+body.sweepstakes .top-section .nav-tabs li:first-child::before{left:calc(50% + 11px);}
+body.sweepstakes .top-section .nav-tabs li>a{padding-top:6px;padding-bottom:6px;}
+body.sweepstakes .top-section .nav-tabs li>a .number{font-size:17px;width:24px;height:24px;line-height:21px;border-radius:12px;background:transparent;border:2px solid white;}
+body.sweepstakes .top-section .nav-tabs li.active>a::after{font-size:6px;top:-4px;left:25px;}
+body.sweepstakes .top-section .inputs-board{padding-top:50px;}
+body.sweepstakes .top-section .inputs-board .cards_n_logs{max-width:230px;}
+body.sweepstakes .top-section .tab-pane .input-container{padding:5px 0px;}
+body.sweepstakes .top-section .tab-pane .button-wrapper{margin-top:5px;}
+body.sweepstakes .top-section .tab-pane .input-container .form-control{height:32px;}
+body.sweepstakes .elButton.large .main{font-size:25px;}
+body.sweepstakes .elButton.large .sub{font-size:12px;}
+body.sweepstakes .elButton{padding:5px 10px;}
+body.sweepstakes .count-down-container{margin-top:20px;background-size:443px 98px;width:443px;height:98px;}
+body.sweepstakes .count-down-container > span.heading{font-size:16px;width:62px;line-height:1.1em;color:#990300;margin-left:10px;}
+body.sweepstakes .count-down-container > i{font-size:50px;color:#990300;margin-left:10px;}
+body.sweepstakes .count-down-container .count-down.large .timer div{max-width:42px;min-width:42px;font-size:24px;border:4px solid #DBDBDB;border-radius:10px;margin:0px 7px;padding-bottom:7px;}
+body.sweepstakes .count-down-container .count-down.large .unit div{max-width:42px;min-width:42px;margin:0px 7px;font-size:9px;}
+body.sweepstakes .count-down-container .count-down.large .unit{top:26px;}
+body.sweepstakes .count-down-container .count-down.large .timer div:not(:last-child)::after{right:-15px;top:0px;}
+body.sweepstakes .count-down-container > .message{margin-left:5px;}
+body.sweepstakes .count-down-container > .message .hurry{font-size:24px;}
+body.sweepstakes .count-down-container > .message .enter{font-size:20px;}
+body.sweepstakes .count-down-container-closed{background-size:443px 98px;width:443px;height:98px;}
+body.sweepstakes .count-down-container-closed span{font-size:16px;}
+body.sweepstakes .top-section .feedback-section .feedback-wrapper .feedback{padding:20px;}
+body.sweepstakes .top-section .feedback-section .feedback-wrapper .feedback h2{font-size:13px;margin-left:65px;}
+body.sweepstakes .top-section .feedback-section .feedback-wrapper .feedback p{font-size:10px;margin-left:65px;}
+body.sweepstakes .spec-section .header h3{font-size:30px;}
+body.sweepstakes .spec-section .header h2{font-size:23px;}
+body.sweepstakes .spec-section .features img{max-width:410px;}
+body.sweepstakes .spec-section .features ul{font-size:14px;line-height:1.2em;}
+body.sweepstakes .spec-section .features ul.left li{margin:25px 0px;padding-left:45px;position:relative;}
+body.sweepstakes .spec-section .features ul.right li{margin:25px 0px;padding-right:45px;position:relative;}
+body.sweepstakes .spec-section .features ul li:before{content:' ';width:33px;height:36px;background:url(https://d2q2bkkwoz3pe2.cloudfront.net/images/sprites1.png) -10px -240px;}
+body.sweepstakes .proof-section .header h2{font-size:28pt;}
+body.sweepstakes .proof-section .header h3{font-size:16pt;max-width:460px;}
+body.sweepstakes .proof-section .details .name{font-size:15pt;padding:5px 10px;line-height:1.2em;}
+body.sweepstakes .proof-section .details .review{font-size:20pt;margin-top:15px;}
+body.sweepstakes .proof-section .details .text{font-size:14pt;margin-top:15px;}
+body.sweepstakes .featured-partners-section .header{font-size:20px;}
+body.sweepstakes .featured-partners-section .partner-logo{zoom:0.64;-moz-transform:scale(0.64);}
+body.sweepstakes .benefits-section .header h2{font-size:28pt;}
+body.sweepstakes .benefits-section .header h3{font-size:21pt;}
+body.sweepstakes .extra-section .header h2{font-size:28pt;}
+body.sweepstakes .extra-section .header h3{font-size:21pt;}
+body.sweepstakes .extra-section .text-box h2{font-size:17pt;}
+body.sweepstakes .extra-section .text-box p{font-size:12pt;}
+body.sweepstakes .faq-section .header{font-size:32px;}
+body.sweepstakes .faq-section .header small{font-size:25px;}
+body.sweepstakes .sponsors-section .trust-hide{display:block;margin:30px auto;text-align:center;}
+body.sweepstakes .sponsors-section .trust-desktop{display:none;}
+body.sweepstakes .sponsors-section .unflex{display:block;}
+body.sweepstakes .sponsors-section button[type="submit"]{max-width:440px;margin:0px;width:100%;}
+body.sweepstakes .sponsors-section .center-div{display:block;margin:0 auto;}
+}
+@media screen and (min-width:786px){.layout-row-tablet{flex-direction:row;}
+}
+@media screen and (max-width:767px){.layout-col-phone{flex-direction:column;}
+//iphone
+.nav_bar{min-height:33px;}
+.nav_bar span{font-size:15px;}
+.nav_bar .flag{display:none;}
+.contentInner{max-width:640px;margin:auto;}
+body.sweepstakes .top-section{background-position:-400px -80px;background-size:cover;}
+body.sweepstakes .top-section .logo-wrapper{margin-top:25px;}
+body.sweepstakes .top-section .logo-wrapper .logo{max-width:286px;}
+body.sweepstakes .top-section .logo-wrapper .divider{max-width:327px;}
+body.sweepstakes .top-section .logo-wrapper .divider{margin-top:17px;}
+body.sweepstakes .top-section .man{display:none;}
+body.sweepstakes .top-section .banner{margin-top:15px;margin-left:unset;padding:0px 5px;}
+body.sweepstakes .top-section .banner .ask{font-size:19px;}
+body.sweepstakes .top-section .banner .prize{font-size:23px;margin-top:10px;}
+body.sweepstakes .top-section .top-section-inner{flex-wrap:wrap;}
+body.sweepstakes .top-section .fb-page-wrapper{max-width:100%;width:calc(100vw - 20px);overflow:hidden;}
+body.sweepstakes .top-section .left-panel{padding:20px 0px 0px 0px;min-width:100%;}
+body.sweepstakes .top-section .left-panel .saying{max-width:500px;width:100%;text-align:center;margin:unset;font-size:20px;line-height:1.1em;color:white;padding:10px;background-size:unset;background-position:-40px top;}
+body.sweepstakes .top-section .nav-tabs-wrapper{min-height:130px;}
+body.sweepstakes .top-section .nav-tabs-wrapper .text-large{font-size:28px;}
+body.sweepstakes .top-section .nav-tabs-wrapper .text-small{font-size:16px;}
+body.sweepstakes .top-section .nav-tabs li:first-child::before{left:calc(50% + 12px);}
+body.sweepstakes .top-section .nav-tabs li>a{padding-top:10px;padding-bottom:10px;}
+body.sweepstakes .top-section .nav-tabs li>a .number{font-size:16px;width:28px;height:28px;text-align:center;line-height:24px;border-radius:14px;background:transparent;color:white;border:3px solid white;}
+body.sweepstakes .top-section .inputs-board{padding-top:20px;padding-left:0px;padding-right:0px;max-width:unset;min-width:100%;}
+body.sweepstakes .top-section .nav-tabs li.active>a::after{font-size:9px;top:-5px;left:27px;}
+body.sweepstakes .top-section .inputs-board .cards_n_logs{max-width:100%;}
+body.sweepstakes .top-section .tab-pane .input-container{padding:10px 0px;}
+body.sweepstakes .top-section .tab-pane .button-wrapper{margin-top:10px;}
+body.sweepstakes .top-section .tab-pane .input-container .form-control{height:39px;}
+body.sweepstakes .elButton.large .main{font-size:25px;}
+body.sweepstakes .elButton.large .sub{font-size:12px;}
+body.sweepstakes .elButton{padding:5px 10px;}
+body.sweepstakes .count-down-container{margin-top:20px;background-image:url(https://d2q2bkkwoz3pe2.cloudfront.net/images/ticket_small.png);background-repeat:no-repeat;width:100%;min-width:305px;justify-content:center;height:137px;background-size:100% 137px;flex-wrap:wrap;padding:10px 0px 0px 0px;position:relative;}
+body.sweepstakes .count-down-container::after{content:'';position:absolute;top:3px;left:3px;right:3px;height:100%;background-image:url(https://d2q2bkkwoz3pe2.cloudfront.net/images/ticket_small_star.png);background-repeat:repeat-x;}
+body.sweepstakes .count-down-container-closed{margin-top:20px;background-size:298px 60px;width:100%;min-width:305px;height:60px;}
+body.sweepstakes .count-down-container > span.heading{font-size:16px;width:40px;line-height:1.1em;color:#990300;margin-left:10px;}
+body.sweepstakes .count-down-container > i{font-size:50px;color:#990300;margin-left:10px;}
+body.sweepstakes .count-down-container .count-down.large .timer div{max-width:42px;min-width:42px;font-size:24px;border:4px solid #DBDBDB;border-radius:10px;margin:0px 7px;padding-bottom:7px;}
+body.sweepstakes .count-down-container .count-down.large .unit div{max-width:42px;min-width:42px;margin:0px 7px;font-size:9px;}
+body.sweepstakes .count-down-container .count-down.large .unit{top:26px;}
+body.sweepstakes .count-down-container .count-down.large .timer div:not(:last-child)::after{right:-15px;top:0px;}
+body.sweepstakes .count-down-container > .message{width:100%;margin-left:unset;min-width:0px;align-items:center;display:flex;align-items:center;justify-content:center;}
+body.sweepstakes .count-down-container > .message .hurry{font-size:24px;}
+body.sweepstakes .count-down-container > .message .enter{margin-left:10px;font-size:24px;}
+body.sweepstakes .count-down-container-closed span{font-size:16px;}
+body.sweepstakes .top-section .feedback-section .feedback-wrapper{padding-left:0px;padding-right:0px;}
+body.sweepstakes .top-section .feedback-section .feedback-wrapper .feedback h2{font-size:18px;}
+body.sweepstakes .top-section .feedback-section .feedback-wrapper .feedback p{font-size:13px;}
+body.sweepstakes .top-section .feedback-section .fb-page-wrapper{width:100%;min-width:100%;}
+body.sweepstakes .top-section .feedback-section .fb-page-wrapper{padding-left:0px;padding-right:0px;}
+body.sweepstakes .spec-section .header{padding:20px 0px;}
+body.sweepstakes .spec-section .header h3{font-size:28px;}
+body.sweepstakes .spec-section .header h2{font-size:21px;}
+body.sweepstakes .spec-section .divider{margin-top:17px;content:url(https://d2q2bkkwoz3pe2.cloudfront.net/images/divider_small.png)}
+body.sweepstakes .spec-section .features{flex-direction:column;}
+body.sweepstakes .spec-section .features img{max-width:100%;}
+body.sweepstakes .spec-section .features ul{font-size:18px;line-height:unset;}
+body.sweepstakes .spec-section .features ul.left li{margin:35px 0px;padding-left:60px;}
+body.sweepstakes .spec-section .features ul.right li{margin:35px 0px;padding-right:60px;}
+body.sweepstakes .spec-section .features ul li:before{width:51px;height:55px;background:url(https://d2q2bkkwoz3pe2.cloudfront.net/images/sprites1.png) -102px -95px;}
+body.sweepstakes .proof-section .winner.even{display:flex;flex-direction:column-reverse;margin-top:20px}
+body.sweepstakes .proof-section .winner.odd{display:flex;flex-direction:column-reverse;margin-top:20px}
+body.sweepstakes .proof-section .header h2{font-size:28pt;}
+body.sweepstakes .proof-section .header h3{font-size:16pt;max-width:460px;}
+body.sweepstakes .proof-section .details .name{font-size:13pt;padding:10px;line-height:1.2em;margin-top:20px;}
+body.sweepstakes .proof-section .details .review{font-size:16pt;margin-top:20px;}
+body.sweepstakes .proof-section .details .text{font-size:12pt;margin-top:20px;}
+body.sweepstakes .featured-partners-section .header{font-size:20px;}
+body.sweepstakes .featured-partners-section .partner-logo{zoom:1;-moz-transform:scale(1);}
+body.sweepstakes .benefits-section .header{padding:20px 0px;}
+body.sweepstakes .benefits-section .header h2{font-size:24pt;}
+body.sweepstakes .benefits-section .header h3{font-size:21pt;}
+body.sweepstakes .benefits-section .text-box{font-size:12pt;}
+body.sweepstakes .benefits-section ul{font-size:12pt;}
+body.sweepstakes .benefits-section ul li:before{margin-top:-0.1em;}
+body.sweepstakes .extra-section .header h2{font-size:24pt;}
+body.sweepstakes .extra-section .header h3{font-size:18pt;}
+body.sweepstakes .sponsors-section .trust-desktop{display:block;}
+body.sweepstakes .sponsors-section .layout-row{flex-direction:column;}
+body.sweepstakes .sponsors-section .trust-hide{display:none;}
+body.sweepstakes .sponsors-section button[type='submit']{margin:20px 0px;}
+body.sweepstakes .section-8{padding:60px 0 30px;background:url(https://d2q2bkkwoz3pe2.cloudfront.net/thumbnails/sec8-bg-small.png) no-repeat;background-size:cover !important;background-position:top center;background-image:url(https://d2q2bkkwoz3pe2.cloudfront.net/images/sec8-bg-small.png) !important;}
+body.sweepstakes .faq-section .header{font-size:28px;}
+body.sweepstakes .faq-section .header small{font-size:21px;}
+}
+@media screen and (max-width:649px){.contentInner{max-width:420px;margin:auto;width:100%;padding:0px 15px;}
+}

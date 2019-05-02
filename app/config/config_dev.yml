@@ -1,0 +1,35 @@
+imports:
+    - { resource: config.yml }
+
+framework:
+    router:
+        resource: "%kernel.root_dir%/config/routing_dev.yml"
+        strict_requirements: true
+    profiler: { only_exceptions: false }
+
+web_profiler:
+    toolbar: true
+    intercept_redirects: false
+
+monolog:
+    handlers:
+        main:
+            type: stream
+            path: "%kernel.logs_dir%/%kernel.environment%.log"
+            level: debug
+            channels: [!event]
+        console:
+            type:   console
+            channels: [!event, !doctrine]
+        # uncomment to get logging in your browser
+        # you may have to allow bigger header sizes in your Web server configuration
+        #firephp:
+        #    type:   firephp
+        #    level:  info
+        #chromephp:
+        #    type:   chromephp
+        #    level:  info
+
+swiftmailer:
+    delivery_addresses: ['fastitteam@gmail.com', 'resto.mods@litmustest.com']
+    #delivery_addresses: ['barracuda@barracuda.emailtests.com', 'previews_01@gmx.de', 'litmuscheck02@gmail.com', 'litmuscheck02@yahoo.com', 'litmuscheck05@mail.com', 'litmuscheck02@outlook.com', 'litmuscheck02@emailtests.onmicrosoft.com', 'previews_96@web.de', 'litmuscheck03@mail.ru', 'litmuscheck07@gmail.com', 'litmuscheck05@gapps.emailtests.com', 'litmuscheck02@ms.emailtests.com', 'litmustestprod02@gd-testing.com', 'litmustestprod02@yandex.com', 'litmuscheck002@aol.com', '5bb0ca65d2@s.litmustest.com', '5bb0ca65d2@sg3.emailtests.com', '5bb0ca65d2@ml.emailtests.com']

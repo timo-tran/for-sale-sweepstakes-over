@@ -1,0 +1,42 @@
+parameters:
+    database_host:     127.0.0.1
+    database_port:     ~
+    database_name:     symfony
+    database_user:     root
+    database_password: ~
+    mailer_transport:  smtp
+    mailer_host: 127.0.0.1
+    mailer_user: ~
+    mailer_password: ~
+    mailer_port: ~
+    mailer_encryption: ~
+    mailer_name:
+    mailer_address:
+
+    # A secret key that's used to generate certain security-related tokens
+    secret:            ThisTokenIsNotSoSecretChangeIt
+
+    # RestoMODS related parameters
+    restomods.host: 
+    restomods.base_url: '/for-sale'
+    restomods.url.scheme: 'http:'
+    restomods.woocommerce.consumer_key:
+    restomods.woocommerce.consumer_secret:
+    restomods.stripe.secret_key:
+    restomods.stripe.publishable_key:
+    restomods.stripe.single_ad_cost:
+    restomods.stripe.membership_cost:
+    restomods.stripe.membership_plan:
+    restomods.limelight.domain:
+    restomods.limelight.username:
+    restomods.limelight.password:
+    restomods.limelight.campaign:
+    restomods.limelight.shipping:
+    restomods.limelight.membership_product_id:
+    restomods.limelight.single_ad_product_id:
+    restomods.recaptcha.public_key:
+    restomods.recaptcha.private_key:
+    restomods.gmaps.api_key:
+    restomods.google_analytics_id:
+    restomods.facebook_pixel_id:
+    restomods.sendgrid.api_key:

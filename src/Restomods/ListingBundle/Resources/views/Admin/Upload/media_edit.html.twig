@@ -1,0 +1,244 @@
+{% extends 'SonataAdminBundle:CRUD:base_edit.html.twig' %}
+
+{% block form %}
+    {{ parent() }}
+    <style>
+        .image-uploader-main-wrapper .field-container, .image-uploader-main-wrapper .control-label, .image-uploader-main-wrapper .box-header{display:none;}
+        .image-fields-wrapper{display:none;}
+        #image-uploader .image-wrapper{cursor: move;}
+        #image-uploader .image-wrapper .inner-wrapper{position:relative;box-shadow:1px 1px 0.2px #EEE;border:#DDD solid 1px;transition:all ease 0.3s;background:#FFF;margin-bottom:15px;overflow: hidden;}
+        #image-uploader .image-wrapper .inner-wrapper.disable{opacity:0.7;}
+        #image-uploader .image-wrapper .preview{height:150px;background: #1A2123 url({{ asset('images/img-placeholder.png') }}) no-repeat center/contain;}
+        #image-uploader .image-wrapper .actions{background:rgba(0,0,0,0.8);position:absolute;width:100%;bottom:-50px;left:0;padding:4px;text-align: center;opacity:0;transition:all ease 0.3s;}
+        #image-uploader .image-wrapper:hover .actions{bottom:0;opacity: 1;}
+        #image-uploader .image-wrapper .actions span{display:block;text-align:center;}
+        #image-uploader .image-wrapper .actions .active{float:left;height:22px;}
+        #image-uploader .image-wrapper .actions .delete{font-size:20px;cursor:pointer;color: #fff;}
+        #image-uploader .image-wrapper .actions label{display:block;}
+        #image-uploader .image-wrapper .form-wrapper{}
+        #image-uploader .image-wrapper .form-wrapper label{font-size:12px;font-weight:normal;}
+        #image-uploader .image-wrapper .form-wrapper textarea{resize:none;width:100%;height:100%;border:#DDD solid 1px;display:block;border-radius:0;padding:10px;}
+        #image-uploader .fields{display:none;}
+        #image-uploader .upload-widget{margin-bottom:20px;}
+        #image-uploader .upload-widget form,#image-uploader .upload-widget input{height:100%;width:100%;opacity:0;cursor:pointer;}
+        #image-uploader .upload-widget .inner{height:150px;background:#EEE url({{ asset('images/upload-image.png') }}) no-repeat center;box-shadow:1px 1px 0.2px #EEE;border:#DDD solid 1px;cursor:pointer;}
+    </style>
+    <div class="modal fade" id="image-loading-popup" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"></button>
+                    <h4 class="modal-title" id="myModalLabel">Upload Progress</h4>
+                </div>
+                <div class="modal-body row">
+                    <div class="col-sm-12">
+                        <div class="progress-group">
+                            <span class="progress-text" style="font-weight:normal;">Image Uploading Progress</span>
+                            <span class="progress-number"><b class="total-progress">0</b>/100</span>
+                            <div class="progress sm" style="margin-top:10px;">
+                                <div class="progress-bar progress-bar-green total-progress-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/template" id="file-upload-item">
+        <div id="<%= file.uid %>" class="image-wrapper col-lg-2 col-md-4 col-sm-6 col-xs-12">
+            <div class="inner-wrapper">
+                <div class="preview" style="background-image: url(<%= file.name %>)"></div>
+                <div class="actions">
+                    <span class="delete delete-image"><i class="fa fa-trash-o"></i></span>
+                </div>
+                <div class="fields">
+                    <input class="form-control image-src" type="hidden" id="{{ admin.uniqid }}_{{ admin.getUploadField }}_<%= file.idx %>_src" name="{{ admin.uniqid }}[{{ admin.getUploadField }}][<%= file.idx %>][src]" required >
+                    <input class="image-position" type="hidden" id="{{ admin.uniqid }}_{{ admin.getUploadField }}_<%= file.idx %>_position" name="{{ admin.uniqid }}[{{ admin.getUploadField }}][<%= file.idx %>][position]" value="<%= file.position %>" />
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script src="{{ asset('js/jquery.fileupload.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/underscore-min.js') }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        $('.image-fields-wrapper').remove();
+        $('.image-uploader-main-wrapper').find('.control-label, .box-header, .field-container').remove();
+        $(function(){
+            var ImageUploader = {
+
+                uploadData : [],
+
+                init: function () {
+                    //Clear default table
+                    this.cacheElements();
+                    this.bindEvents();
+                    this.initUploader();
+                    this.initSortable();
+                },
+
+                cacheElements : function () {
+                    this.Uploader = {};
+                    this.ImageUploadWrapper = $('#image-uploader');
+                    this.uploadHandler = this.ImageUploadWrapper.find('#upload-handler');
+                    this.uploadWidget = this.ImageUploadWrapper.find('.upload-widget');
+                    this.mainForm = $('form[role=form]');
+                    this.startUpload = this.ImageUploadWrapper.find('#start-upload-file');
+                    this.uploadProcessModal = $('#image-loading-popup');
+                },
+
+                bindEvents : function () {
+                    this.mainForm.on('submit', this.uploadStart.bind(this));
+                    this.mainForm.find('button[type=submit]').on( "click", function() {
+                        $("<input type='hidden' name='"+ $(this).attr('name') +"'/>").appendTo('form[role=form]');
+                    });
+                    this.uploadHandler.bind('fileuploaddone', this.uploadDone.bind(this));
+                    this.uploadHandler.bind('fileuploadsubmit', this.uploadSubmit.bind(this));
+                    this.uploadHandler.bind('fileuploadstop', this.uploadStop.bind(this));
+                    this.uploadHandler.bind('fileuploadprogressall', this.uploadProgress.bind(this));
+                    this.ImageUploadWrapper.on('click', '.delete-image', this.deleteUploadImage.bind(this));
+                },
+
+                initSortable : function () {
+                    this.ImageUploadWrapper.sortable({
+                        stop: function(event, ui){
+                            $.map($(this).find('.image-wrapper'), function (el) {
+                                $(el).find('.image-position').val($(el).index());
+                            });
+                        }
+                    });
+                },
+
+                addToList : function (e, data) {
+
+                    var uploadErrors = [],
+                            acceptFileTypes = /^image\/(gif|jpe?g|png)$/i;
+
+                    if(data.originalFiles[0]['type'].length && !acceptFileTypes.test(data.originalFiles[0]['type'])) {
+                        uploadErrors.push('Invalid file type');
+                    }
+                    if(data.originalFiles[0]['size'].length && data.originalFiles[0]['size'] > 5000000) {
+                        uploadErrors.push('Filesize is too big');
+                    }
+                    if(uploadErrors.length > 0) {
+                        alert(uploadErrors.join("\n"));
+                    } else {
+
+                        data.uid = this.generateUid();
+                        var _self = this,
+                                total = this.ImageUploadWrapper.find('.image-wrapper').length,
+                                file = {
+                                    'name': e.target.result,
+                                    'uid': data.uid,
+                                    'idx': total,
+                                    'position': total
+                                },
+                                tpl = _.template($('#file-upload-item').html())({file: file});
+
+                        this.uploadWidget.before(tpl);
+
+                        if (data.files && data.files[0] && acceptFileTypes.test(data.originalFiles[0]['type'])) {
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                _self.ImageUploadWrapper.find('#' + data.uid).find('.preview').css('backgroundImage', 'url(' + e.target.result + ')');
+                            };
+                            reader.readAsDataURL(data.files[0]);
+                        }
+                        this.uploadData.push(data);
+                    }
+                },
+
+                deleteUploadImage : function (e) {
+                    if(confirm('Are you sure?')){
+                        var $wrapper = $(e.currentTarget).parents('.image-wrapper');
+                        var $fields = $wrapper.find("div.fields");
+                        var delete_name = $fields.data("delete");
+                        $wrapper.find("input.image-src").clone().appendTo(this.mainForm);
+                        this.mainForm.append("<input type=hidden name='"+delete_name+"' value='1' />");
+                        $wrapper.remove();
+                    }
+                    return false;
+                },
+
+                uploadSubmit : function (e, data) {
+                    data.formData = {
+                        'uid' : data.uid
+                    }
+                },
+
+                uploadProgress : function (e, data) {
+                    var progress = parseInt(data.loaded / data.total * 100, 10);
+                    this.uploadProcessModal.find('.total-progress').text(progress);
+                    this.uploadProcessModal.find('.total-progress-bar').css('width', progress + '%');
+                },
+
+                uploadDone : function (e, data) {
+                    if(data.result) {
+                        var resp = JSON.parse(data.result);
+                        $('#' + resp.files[0].uid + ' .fields input.image-src').val(resp.files[0].name);
+                    }
+                },
+
+                uploadStop : function (e) {
+                    this.uploadProcessModal.modal('hide');
+                    this.uploadData = [];
+                    this.mainForm.off('submit');
+                    this.mainForm.submit();
+                },
+
+                uploadStart : function (e) {
+                    e.preventDefault();
+                    e.returnValue = false;
+                    var _self = this;
+
+                    if(this.uploadData.length > 0) {
+                        this.uploadProcessModal.modal({
+                            'backdrop' : false,
+                            'keyboard' : false
+                        });
+                        _.each(this.uploadData, function (data, i) {
+                            data.submit();
+                        });
+                    }else{
+                        $(e.currentTarget).off('submit');
+                        $(e.currentTarget).submit();
+                    }
+                },
+
+                generateUid: function() {
+                    function s4() {
+                        return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+                    }
+                    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+                            s4() + '-' + s4() + s4() + s4();
+                },
+
+                initUploader : function () {
+
+                    this.Uploader = this.uploadHandler.fileupload({
+                        url: '{{ path('restomods_upload_media') }}',
+                        autoUpload: false,
+                        //maxChunkSize: 10000000,
+                        //maxRetries: 100,
+                        //retryTimeout: 500,
+                        uploadTemplate: null,
+                        downloadTemplate: null,
+                        limitMultiFileUploads: 10,
+                        add: this.addToList.bind(this)
+                    }).bind('fileuploadprocessstart', function (e) {
+                        console.log('start')
+                    }).bind('fileuploadprocessdone', function (e, data) {
+                        console.log('completed')
+                    }).bind('fileuploadprocessalways', function (e, data) {
+                        console.log('always')
+                    })
+                    ;
+                }
+
+            };
+
+            ImageUploader.init();
+        })
+    </script>
+{% endblock %}

@@ -1,0 +1,120 @@
+{% extends "SonataUserBundle:Profile:action.html.twig" %}
+
+{% block sonata_profile_content %}
+    {% form_theme form 'bootstrap_3_layout.html.twig' %}
+    {{ form_errors(form) }}
+
+    <div class="rm-registration-form-container">
+        <div class="rm-registration-form-title">
+            <h2>Change your email address</h2>
+        </div>
+        {% include "SonataUserBundle:Profile:edit_authentication_content.html.twig" %}
+    </div>
+
+    <div class="rm-registration-form-container">
+        <div class="row">
+            <div class="rm-registration-form-title">
+                <h2>Membership Status</h2>
+            </div>
+            {% if app.user.isCustomer and app.user.hasSubscription %}
+                <div class="col-md-6 col-lg-4 rm-dashboard-membership-type">Standard membership</div>
+                <div class="col-md-6 col-lg-8 rm-dashboard-upgrade-membership">
+                    <button class="btn btn-danger rm-dashboard-upgrade-membership-button" role="button" data-toggle="modal"
+                            data-target=".rm-cancel-subscription-modal">Cancel
+                    </button>
+                </div>
+            {% else %}
+                <div class="col-md-6 col-lg-4 rm-dashboard-membership-type">No membership</div>
+                <div class="col-md-6 col-lg-8 rm-dashboard-upgrade-membership">
+                    <a href="{{ path('restomods_sweepstakes_order') }}" class="btn btn-danger rm-dashboard-upgrade-membership-button">Upgrade</a>
+                </div>
+            {% endif %}
+        </div>
+
+        {% if app.user.isCustomer or app.user.hasSubscription %}
+            <ul class="nav nav-tabs rm-dashboard-tabs" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#past-payments" aria-controls="past-payments" role="tab" data-toggle="tab">Past Payments</a></li>
+                {% if app.user.hasSubscription %}
+                    <li role="presentation">
+                        <a href="#next-payments" aria-controls="next-payments" role="tab" data-toggle="tab">Next Scheduled Payments</a>
+                    </li>
+                {% endif %}
+            </ul>
+
+            <div class="tab-content rm-dashboard-tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="past-payments">
+                    <table class="table table-bordered table-hover">
+                        {% for payment in pastPayments.stripe %}
+                            <tr {% if payment.refunded %}class="warning" {% endif %}>
+                                <td class="col-md-2">{{ payment.created|date("d M Y") }}</td>
+                                <td class="col-md-8">{{ payment.statement_descriptor|default(payment.description) }}</td>
+                                <td class="col-md-2">
+                                    ${{ (payment.amount / 100)|number_format }}
+                                    {% if payment.refunded %}(refunded){% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        {% for order in pastPayments.limelight %}
+                            <tr {% if order.order_status != 2 %}class="warning" {% endif %}>
+                                <td class="col-md-2">{{ order.time_stamp|date("d M Y") }}</td>
+                                <td class="col-md-8">
+                                    {% for product in order.products %}
+                                        <span class="col-xs-12">{{ product.name }}</span>
+                                    {% endfor %}
+                                </td>
+                                <td class="col-md-2">
+                                    ${{ order.order_total }}
+                                    {% if order.order_status_desc  %}{{order.order_status_desc}}{% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                {% if app.user.hasSubscription %}
+                    <div role="tabpanel" class="tab-pane fade" id="next-payments">
+                        <div role="tabpanel" class="tab-pane active" id="past-payments">
+                            <table class="table table-bordered table-hover">
+                                {% if subscription.stripe is not null %}
+                                <tr>
+                                    <td class="col-md-2">{{ subscription.stripe.current_period_end|date("d M Y") }}</td>
+                                    <td class="col-md-8">{{ subscription.stripe.items.data[0].plan.name }}</td>
+                                    <td class="col-md-2">${{ (subscription.stripe.items.data[0].plan.amount / 100)|number_format }}</td>
+                                </tr>
+                                {% endif %}
+                                {% if subscription.limelight is not null %}
+                                <tr>
+                                    <td class="col-md-2">{{ subscription.limelight.products[0].recurring_date|date("d M Y") }}</td>
+                                    <td class="col-md-8">{{ subscription.limelight.products[0].name }}</td>
+                                    <td class="col-md-2">${{ subscription.limelight.products[0].price }}</td>
+                                </tr>
+                                {% endif %}
+                            </table>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+
+    <div id="cancelSubscriptionModal" class="modal fade rm-cancel-subscription-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            {{ form_start(cancel_subscription_form) }}
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Cancel Subscription</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to cancel your subscription?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Cancel Subscription</button>
+                </div>
+            </div>
+            {{ form_end(cancel_subscription_form) }}
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,133 @@
+{% extends 'RestomodsListingBundle:Sweepstakes:base.html.twig' %}
+{% block google_tag_manager_data_layer %}
+<script>
+    dataLayer = [{
+        'flowStep': 'step3',
+        'totalEntries': '{{ total_entries }}'
+    }];
+</script>
+{% endblock google_tag_manager_data_layer %}
+{% block extra_stylesheets %}
+<style>
+    .gray { color: #4747474;}
+    .font-18 {font-size: 18px;}
+    .font-23 {font-size: 23px;}
+    .font-24 {font-size: 24px;}
+    .font-36 {font-size: 38px;}
+
+    .section {padding: 20px 40px; border-radius: 5px; max-width: 720px; background: #FFF; }
+    .product-table {margin: 30px 0px;}
+    .product-table .title {font-size: 16px;color: rgba(136, 136, 136, 0.91); font-weight: 700;}
+    .product-table .title::before {content: "\f00c"; position: relative; display: inline-block;font-family: FontAwesome;margin-right: 5px;}
+    .product-table .header {display: flex; justify-content:space-between; border-bottom: 1px solid #e2e7e8; line-height: 32px;}
+    .product-table .header span:first {flex: 1 0;}
+    .product-table .content > div {padding: 5px 0px;}
+
+    @media screen and (max-width: 640px) {
+        .font-24 {font-size: 21px;}
+        .font-36 {font-size: 22px;}
+        .package .header { font-size: 28px; }
+        .package .body { font-size: 19px; }
+    }
+
+    @media screen and (max-width: 768px) {
+        .container-fluid > .navbar-header span {
+            font-size: 15px;
+        }
+    }
+</style>
+{% endblock extra_stylesheets %}
+{% block nav_sweepstakes %}
+<div class="sweepstakes flex layout-row wrap justify-center"><span>Sweepstakes ends&nbsp;</span><span> {{sweepstakes.endDate | date_modify('-5 hours') | date('F jS, Y')}}</span></div>
+{% endblock nav_sweepstakes %}
+{% block body %}
+<div class="row" style="background-image: linear-gradient(to bottom, #0F8790 , #6BCACE);">
+    <div class="flex layout-col body center justify-center" style="margin-top: 30px;">
+        {% if error is not null %}
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        {{ error | raw }}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <div class="section fit-width layout-col">
+            <div class="font-36 brown text-center strong">Thanks for Signing up!</div>
+            <p class="font-18 black">
+                <br>
+                <b>Congratulations! Your sweepstakes entries are set.</b>The Winner will have the choice between our {{sweepstakes.carName}} or {{sweepstakes.prize}} in cash! Keep an eye out for our lead up to the big winner announcement on {{sweepstakes.endDate | date_modify('+5 day') | date('M j, Y')}}.<br><br>
+                To complete your registration for other VIP Member benefits please click the green button below.<br><br>
+                From there, you will be directed to your account dashboard.<br><br>
+                Good luck!<br>
+                Dominique, The <b>CRUSH</b>XO Team
+                <br><br>
+            </p>
+            <a id="no_action" class="elButton brown normal" onclick="dataLayer.push({'event': 'dashboard'}); return true;" href="{{ path('sonata_user_profile_show') }}">
+                <span class="main">Checkout Your Dashboard</span>
+                <span class="sub">Your entries are set but don't miss our dashboard</span>
+            </a>
+
+            <div class="product-table flex layout-col">
+                <div class="title" style="">Your Product Receipt:</div>
+                <div class="header" style="">
+                    <span class="strong">Product</span>
+                    <span class="strong">Price</span>
+                </div>
+                <div class="content flex layout-col">
+                    <div class="row">
+                        {% for purchase in purchases %}
+                            <div class="col-xs-12 col-sm-8">{{purchase.name}}</div>
+                            <div class="col-xs-12 col-sm-4 text-right">{{purchase.price}}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <img class="img-responsive thumbnail" style="margin-top: 20px" src="{{ sweepstakes.featuredImage2 | imagine_filter('original') | replace({'http:':restomods_url_scheme}) }}"></img>
+        </div>
+    </div>
+
+    <div class="footer body flex layout-row wrap center justify-center">
+        <span class="text-center">Copyright - All Right Reserved - Restomods Media Inc.</span>
+        <span class="text-center">&nbsp;|&nbsp;</span>
+        <a href="/privacy-policy" target="_blank">Privacy Policy</a>
+        <span class="text-center">&nbsp;|&nbsp;</span>
+        <a href="/terms" target="_blank">Terms of Service</a>
+        <span class="text-center">&nbsp;|&nbsp;</span>
+        <a href="/contact-us" target="_blank">Contact Us</a>
+    </div>
+
+
+</div>
+{% endblock body %}
+{% block pixel_block %}
+    {{ settings.landingFooterScript | raw }}
+    {% if restomods_google_analytics_id %}
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', '{{ restomods_google_analytics_id }}', 'auto');
+        ga('require', 'ec');
+        {% if purchases_packages | length > 0 %}
+            {% for purchase in purchases_packages %}
+                ga('ec:addProduct', {id: '{{ purchase.pid }}', name: '{{ purchase.name }}', price: '{{ purchase.price_value}}'});
+            {% endfor %}
+            ga('ec:setAction', 'purchase', {id: '{{ purchases_packages[0].tid }}', revenue: '{{ total_price }}'});
+        {% endif %}
+        ga('send', 'event', 'confirm', 'view');
+    </script>
+    {% endif %}
+{% endblock %}
+{% block extra_javascripts %}
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script type="text/javascript">
+    jQuery(function ($) {
+        {% if initial_purchase_amount %}
+        dataLayer.push({'event': 'purchase', 'transactionTotal': {{ initial_purchase_amount / 2 }} });
+        {% endif %}
+    });
+</script>
+{% endblock extra_javascripts %}

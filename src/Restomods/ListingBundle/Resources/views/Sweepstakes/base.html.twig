@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}CrushXO Ultimate Makeover Sweepstakes{% endblock %}</title>
+    {% set _defer_css_block = block('defer_css_block') %}
+    {% set _pre_body_block = block('_pre_body_block') %}
+    {% if _defer_css_block is empty %}
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One:400,500,700|Quattrocento:400,500,700|Droid+Sans:400,500,700|Open+Sans:400,500,700|Roboto:300,400,700,900|Roboto+Slab:300,400|Oswald:400,500,700|Montserrat:300,400,700" rel="stylesheet">
+    {% endif %}
+    {% block stylesheets %}
+        {% if _defer_css_block is empty %}
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        {% endif %}
+        {% stylesheets 'css/*' filter='cssrewrite' output='dist/main.css' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/extra/sweepstakes.css') }}" />
+        {% block extra_stylesheets %}{% endblock extra_stylesheets %}
+    {% endblock %}
+
+    <link rel="shortcut icon" href="https://cdn.shopify.com/s/files/1/0083/4289/6758/files/favicon-32x32_32x32.png?v=1534346683"/>
+    {% block metainfo %}
+        <meta name="description" content="Cruelty-free, paraben-free, purpose-driven beauty infused with crushed gemstones. 5% of proceeds go to charitable causes around the world.">
+        <meta property="og:locale" content="en_US"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="CrushXO Ultimate Makeover Sweepstakes">
+        <meta property="og:description" content="Cruelty-free, paraben-free, purpose-driven beauty infused with crushed gemstones. 5% of proceeds go to charitable causes around the world.">
+        <meta property="og:url" content="https://win.crushxo.com{{path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))}}"/>
+        <meta property="og:site_name" content="CRUSHXO"/>
+        <meta property="og:image" content="{{sweepstakes.featuredImage1 | imagine_filter('medium') | replace({'http:':restomods_url_scheme})}}"/>
+    {% endblock metainfo %}
+
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="google" value="notranslate" />
+
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+    <link rel="preconnect" href="https://js-agent.newrelic.com" />
+    <link rel="preconnect" href="https://static.hotjar.com" />
+    <link rel="preconnect" href="https://www.googletagservices.com" />
+    <link rel="preconnect" href="https://d2q2bkkwoz3pe2.cloudfront.net" />
+    <link rel="preconnect" href="https://fast.wistia.com" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <link rel="preconnect" href="https://connect.facebook.net" />
+
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    <link rel="dns-prefetch" href="https://js-agent.newrelic.com" />
+    <link rel="dns-prefetch" href="https://static.hotjar.com" />
+    <link rel="dns-prefetch" href="https://www.googletagservices.com" />
+    <link rel="dns-prefetch" href="https://d2q2bkkwoz3pe2.cloudfront.net" />
+    <link rel="dns-prefetch" href="https://fast.wistia.com" />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="https://connect.facebook.net" />
+
+    {% block google_tag_manager_data_layer %}{% endblock google_tag_manager_data_layer %}
+
+    {% if settings.landingHeaderScript %}
+    {{ settings.landingHeaderScript | raw }}
+    {% endif %}
+</head>
+<body class="sweepstakes">
+{% if _pre_body_block is not empty %}
+    {{ _pre_body_block | raw}}
+{% endif %}
+{{ settings.landingNoScript | raw }}
+{% if is_granted('ROLE_PREVIOUS_ADMIN') %}
+    <div class="container-fluid text-center" style="background:rgba(231,47,31,0.2);line-height:20px;font-size:12px;font-weight:bold;">
+        <a style="color:#000;" href="{{ path('restomods_listing_index', {'_switch_user': '_exit'}) }}"><i class="fa fa-sign-out"></i> Exit Impersonation</a>
+    </div>
+{% endif %}
+<div class="container-fluid">
+    {% set _block = block('navbar') %}
+    {% if _block is not empty %}
+    {% block navbar %}{% endblock %}
+    {% else %}
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <div class="contentInner">
+                    <a class="navbar-brand" href="{{ path('restomods_listing_index') }}"><img style="height:unset" alt="Brand" src="{{ asset('images/logo-black.png') }}"></a>
+                    <div class="flex-auto"></div>
+                    {% block nav_sweepstakes %}{% endblock %}
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </nav>
+    {% endif %}
+    {% block body %}{% endblock %}
+</div>
+{% block javascripts %}
+    {% javascripts 'js/jquery.min.js' 'js/bootstrap.min.js' 'js/modernizr.js' 'js/slick.min.js' 'js/sweepstakes.js' output='dist/svendor.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {% if _defer_css_block is not empty %}
+        {{ _defer_css_block | raw}}
+    {% endif %}
+    {% set _block = block('pixel_block') %}
+    {% if _block is not empty %}
+        {{ _block | raw}}
+    {% else %}
+        {{ settings.landingFooterScript | raw }}
+    {% endif %}
+
+    {% block extra_javascripts %}{% endblock extra_javascripts %}
+{% endblock %}
+</body>
+</html>

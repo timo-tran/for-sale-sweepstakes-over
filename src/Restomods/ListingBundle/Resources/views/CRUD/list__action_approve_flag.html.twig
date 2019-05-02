@@ -1,0 +1,7 @@
+{% if object.approved %}
+    <a class="btn btn-sm btn-danger flag_link" href="{{ admin.generateObjectUrl('flag', object) }}" data-toggle="tooltip" title="Flag">
+        <i class="fa fa-flag" aria-hidden="true"></i> <span class="rm-action">Flag</span></a>
+{% else %}
+    <a class="btn btn-sm btn-success approve_link" href="{{ admin.generateObjectUrl('approve', object) }}" data-toggle="tooltip" title="Approve">
+        <i class="fa fa-check-circle" aria-hidden="true"></i> <span class="rm-action">Approve</span></a>
+{% endif %}

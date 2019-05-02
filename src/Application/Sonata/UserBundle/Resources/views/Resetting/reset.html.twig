@@ -1,0 +1,22 @@
+{% extends 'RestomodsListingBundle::base.html.twig' %}
+
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block body %}
+    {{ form_errors(form) }}
+
+    <div class="rm-registration-form-container">
+        <div class="rm-registration-form-title">
+            <h2>{{ "title_user_resetting_reset" | trans({}, 'SonataUserBundle') }}</h2>
+        </div>
+        <div class="panel-body">
+            {{ form_start(form, {'action': path('sonata_user_resetting_reset', {'token': token } ) }) }}
+            {{ form_widget(form) }}
+
+            <div class="form-actions form-group">
+                <button type="submit" class="btn btn-primary">{{ 'resetting.reset.submit'|trans({}, 'FOSUserBundle') }}</button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock body %}

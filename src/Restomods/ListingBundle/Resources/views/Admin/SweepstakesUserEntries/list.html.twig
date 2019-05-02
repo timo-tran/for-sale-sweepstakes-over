@@ -1,0 +1,75 @@
+{% extends 'SonataAdminBundle:CRUD:list.html.twig' %}
+
+{% block list_filters %}{% endblock %}
+
+{% block list_table %}
+  {{ parent() }}
+  {% block sonata_page_content_header %}
+    <div class="container-fluid row" style="background-color: #F8F8F8;margin: auto;height: 50px;">
+      <div class="col-md-9">
+        {% if sweepstakes_id  %}
+        <a href="{{ path('restomods_sweepstakes_export',{id :sweepstakes_id ? sweepstakes_id :null }) }}"><button type="button" id="export-id" value="" class="btn pull-right" style="margin-top: 10px;"><i class="fa fa-download" aria-hidden="true" style="padding-right: 5px;"></i>Export to CSV</button></a>
+        {% endif %}
+      </div>
+      <div class="col-md-3" style="padding-top: 10px;"><i class="fa fa-filter" aria-hidden="true" style="font-size: 15px;padding-right: 5px;"></i><span style="font-size: 16px;padding-right: 10px;">Contest</span>
+        <form action="{{ path('admin_restomods_listing_sweepstakesuserentries_list') }}" method="post" id="sweepstakes-form" style="display:initial">
+          <select name="sweepstakes_data" class="selectpicker" id="sweepstakes-id" style="width: auto">
+            {% if sweepstakes %}
+            {% for contest in sweepstakes %}
+              <option {{ contest.id == sweepstakes_id ? 'selected' }} value="{{ contest.id }}">{{ contest.name }}</option>
+            {% endfor %}
+            {% endif %}
+          </select>
+        </form>
+      </div>
+
+    </div>
+  {% endblock sonata_page_content_header %}
+  {% block sonata_admin_content %}
+      <div class="container-fluid row" style="background-color: #F8F8F8;margin: auto;border-top: 3px solid #367FA9;border-radius: 3px;">
+
+        <table class="table">
+          <thead>
+          <tr>
+            <th>User Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Entries</th>
+            <th>Referral Count</th>
+            <th>Signup Date</th>
+          </tr>
+          </thead>
+          {% if sweepstakesUserEntries %}
+          {% for entries in sweepstakesUserEntries %}
+          <tbody>
+            <tr>
+              <td>{{ entries.user_id }}</td>
+              <td>{{ entries.firstname }}</td>
+              <td>{{ entries.lastname }}</td>
+              <td>{{ entries.email }}</td>
+              <td>{{ entries.phone | phone}}</td>
+              <td>{{ entries.points }}</td>
+              <td>{{ entries.referrer_count }}</td>
+              <td>{{ entries.created_at | date('m-d-Y h:iA') }}</td>
+            </tr>
+          </tbody>
+          {% endfor %}
+          {% endif %}
+        </table>
+
+      </div>
+  {% endblock sonata_admin_content %}
+{% endblock %}
+{% block javascripts %}
+  {{ parent() }}
+  <script type="text/javascript">
+    $(function () {
+      $('#sweepstakes-id').on('change',function (e) {
+        e.preventDefault();
+        $( "#sweepstakes-form" ).submit();
+      })
+    })
+  </script>
+{% endblock %}

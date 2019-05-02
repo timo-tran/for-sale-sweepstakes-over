@@ -1,0 +1,187 @@
+{% extends 'RestomodsListingBundle:Sweepstakes:base.html.twig' %}
+{% block google_tag_manager_data_layer %}
+<script>
+</script>
+{% endblock google_tag_manager_data_layer %}
+{% block title %}{{sweepstakes.carName}} Sweepstakes is Closed{% endblock %}
+{% block metainfo %}
+    <meta name="description" content="You could win a choice between this {{sweepstakes.carName}} or {{ sweepstakes.prize }} in cash claim your entries today.">
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="{{sweepstakes.carName}} Sweepstakes is Closed">
+    <meta property="og:description" content="You could win a choice between this {{sweepstakes.carName}} or {{ sweepstakes.prize }} in cash claim your entries today.">
+    <meta property="og:url" content="https://restomods.com{{path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))}}"/>
+    <meta property="og:site_name" content="RestoMods.com"/>
+    <meta property="og:image" content="{{sweepstakes.images[0].src | imagine_filter('small') | replace({'http:':restomods_url_scheme})}}"/>
+{% endblock metainfo %}
+{% block extra_stylesheets %}
+<style>
+    .gray { color: #474747;}
+    .light-gray {color: #9c9c9c;}
+    .semi-gray-bg { background: rgba(45,45,45,0.79);}
+    .car-overlay-bg {background: url(../images/sweeps/car-overlay.png) no-repeat; background-size: 100% 100% !important;-webkit-background-size: 100% 100% !important; background-repeat: no-repeat !important;}
+    .font-72 {font-size: 72px;}
+    .font-44 {font-size: 44px;}
+    .font-32 {font-size: 32px;}
+    .font-24 {font-size: 24px;}
+    .font-23 {font-size: 23px;}
+    .font-16 {font-size: 16px;}
+
+    .mt-30 {margin-top:30px; line-height: 1.3em;}
+    .mt-20 {margin-top:20px;}
+    .mt-5 {margin-top: 5px;}
+    .pv-15 {padding: 15px;}
+    .pv-50 {padding: 50px;}
+
+    .panel {border: 2px solid #DDD; background: #FFF; border-radius: 4px; padding: 10px;}
+    .nav_bar { min-height: 53px; background: #F11610; padding: 5px 5px; }
+    .nav_bar span { text-transform:uppercase; text-align: center; font-size: 16pt; font-weight: 700; text-shadow: 0 0 3px #760401; }
+    .yellow {color: #FFFA7C; }
+    .yellow2 {color: #fefa7c;}
+
+    ul.calendar li {
+        font-size: 15px;
+        border-bottom: 1px solid #eee;
+    }
+    ul.calendar li i {
+        padding: 10px 10px;
+        background: #3cb371;
+        border-bottom: 2px solid #308f5a;
+        color: #fff;
+        border-radius: 3px;
+        margin: 5px 0;
+        margin-right: 6px;
+        width: auto;
+    }
+    ul.highlights li {
+        font-size: 22px;
+        padding-bottom: 6px;
+        margin-bottom: 6px;
+    }
+
+    @media screen and (max-width: 640px) {
+        .font-72 {font-size: 39px;}
+        .font-44 {font-size: 36px;}
+        .font-32 {font-size: 28px;}
+        .font-24 {font-size: 21px;}
+        .package .header { font-size: 28px; }
+        .package .body { font-size: 19px; }
+        ul.calendar li {
+            font-size: 12px;
+        }
+        ul.highlights li {
+            font-size: 18px;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .container-fluid > .navbar-header span {
+            font-size: 15px;
+        }
+    }
+</style>
+{% endblock extra_stylesheets %}
+{% block navbar %}
+<div class="nav_bar row flex layout-col justify-center" style="">
+    <div class="sweepstakes flex layout-row justify-center center flex-wrap">
+        <span style="color: white;">Sweepstakes ends<font class="yellow"> {{sweepstakes.endDate | date_modify('-5 hours') | date('F j, Y')}}</font></span>
+        <img class="flag" src="https://d2q2bkkwoz3pe2.cloudfront.net/images/flag.png"></img>
+    </div>
+</div>
+
+{% endblock %}
+{% block body %}
+<div class="row">
+    <div class="flex layout-col">
+        <div class="body flex layout-col" style="background: url({{ asset('images/dashboard/pattern-black-md.jpg') }})">
+            <div class="contentInner flex layout-col">
+
+                <div class="flex layout-col center" style="padding: 30px 0px;">
+                    <span class="white font-72 text-center"><b>Winner Being Selected!</b></span>
+                    <span class="yellow2 font-24 strong text-center mt-5"><b>It Could Be You! The Winner Of Our {{sweepstakes.carName}} Sweepstakes Will Be Publicly Announced  On <u>{{sweepstakes.endDate | date_modify('-5 hours') | date_modify('+10 day') | date('F jS')}}.</u></b></span>
+                </div>
+                <div class="h-1"></div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-7 flex layout-col center" style="padding: 20px;">
+                        {% if sweepstakes.closingVideo %}
+                            {% if 'youtube' in sweepstakes.closingVideo %}
+                            <div class="embed-responsive embed-responsive-4by3" style="width: 100%;">
+                                <iframe class="embed-responsive-item" data-src="{{sweepstakes.closingVideo}}?autoplay=0&modestbranding=1&controls=1&showinfo=0&rel=0&hd=1&wmode=transparent"></iframe>
+                            </div>
+                            {% else %}
+                                <div class="" style="width: 100%;">
+                                    <script src="https://fast.wistia.com/embed/medias/{{sweepstakes.closingVideo}}.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_{{sweepstakes.closingVideo}} videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/{{sweepstakes.closingVideo}}/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                    <div class="col-xs-12 col-sm-5 " style="padding: 20px;">
+                        <div class="panel flex layout-col">
+                            <span class="gray font-32 strong text-center">Will The Keys Be Yours?</span>
+                            <span class="gray font-23 text-center">Here's What Happens Next</span>
+                            <ul class="list-unstyled mt-30 calendar" style="color: rgb(96, 96, 96);">
+                                <li>
+                                <i class="fa fa-fw fa-check"></i> <b>{{sweepstakes.endDate | date('F jS', 'US/Pacific')}} - </b>Entries Closed</li>
+                                <li>
+                                <i class="fa fa-fw fa-check"></i>&nbsp;<b>{{sweepstakes.endDate | date('F jS', 'US/Pacific')}} - </b>All Entries Collected &amp; Calculated</li>
+                                <li>
+                                <i class="fa fa-fw fa-check"></i>&nbsp;<b>ANNOUNCE NEXT CAR!</b><br>
+                                </li>
+                                <li>
+                                <i class="fa fa-fw fa-check"></i>&nbsp;<b>{{sweepstakes.selectWinnerDate | date('F jS', 'US/Pacific')}} - </b>Third Party Firm Selects Winner</li>
+                                <li>
+                                <i class="fa fa-fw fa-check"></i>&nbsp;<b>{{sweepstakes.contactWinnerDate | date('F jS', 'US/Pacific')}} - Contact Winner [ Phone &amp; Email]</b>
+                                </li>
+                                <li>
+                                <b><i class="fa fa-fw fa-check"></i>&nbsp; {{sweepstakes.revealWinnerDate | date('F jS', 'US/Pacific')}} - </b>Reveal winner publicly&nbsp; &nbsp; &nbsp; <b>&nbsp;&nbsp;<br></b>
+                                </li>
+                            </ul>
+                            <span class="light-gray font-16 text-center mt-30">[ We have to tally the mail in entries and the winner has to complete paperwork. That is why it takes a bit]</span>
+                            <span class="light-gray font-16 text-center">Winner selected by <a href="https://www.compliancesweeps.com/" target="_blank">independent third party administrator</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="body flex layout-col car-overlay-bg" style="padding-top: 30px; padding-bottom: 30px;">
+            <div class="contentInner flex layout-col" style="width: 100%">
+                <span class="red font-44 text-center">The Winner Of {{sweepstakes.carName}} Will Be Announced Soon!</span>
+                <div class="flex layout-row layout-xs-col" style="width: 100%; ">
+                    {% for image in sweepstakes.images %}
+                    <div class="flex-1" style="padding:15px">
+                        <div class="aspect1-1">
+                            <img class="thumbnail img-responsive" style="margin:auto;" src="{{ image.src | imagine_filter('small') | replace({'http:':restomods_url_scheme}) }}" />
+                        </div>
+                    </div>
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="body flex layout-col section white-bg gray pv-50 font-16" >
+            <div class="contentInner flex layout-col">
+                <div class="font-16 text-center">{{sweepstakes.termsAndCondition | raw}}</div>
+                <div class="flex layout-row wrap copyright center justify-center">
+                    <span class="text-center">Copyright - All Right Reserved - Restomods Media Inc.</span>
+                    <span class="text-center">&nbsp;|&nbsp;</span>
+                    <a href="/privacy-policy" target="_blank">Privacy Policy</a>
+                    <span class="text-center">&nbsp;|&nbsp;</span>
+                    <a href="/terms" target="_blank">Terms of Service</a>
+                    <span class="text-center">&nbsp;|&nbsp;</span>
+                    <a href="/contact-us" target="_blank">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}
+{% block pixel_block %}
+{% endblock %}
+{% block extra_javascripts %}
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="https://d2q2bkkwoz3pe2.cloudfront.net/js/lazyload.min.js"></script>
+<script type="text/javascript">
+$("img.lazyload").lazyload();
+</script>
+{% endblock extra_javascripts %}

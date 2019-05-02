@@ -1,0 +1,100 @@
+body.sweepstakes {background: white;}
+.dark-gray {color: #606060;}
+.light-gray {color: #9c9c9c;}
+.black-bg {background: #000;}
+.white-bg { background: white;}
+.light-gray-bg {background: #F4F4F4;}
+.semi-gray-bg { background: rgba(171, 165, 165, 0.22);}
+.border-red {border-color: #E43B2C;}
+.font-16 {font-size: 16px;}
+.font-19 {font-size: 19px;}
+.font-20 {font-size: 20px;}
+.font-22 {font-size: 22px;}
+.font-23 {font-size: 23px;}
+.font-26 {font-size: 26px;}
+.font-28 {font-size: 28px;}
+.font-32 {font-size: 32px;}
+.font-40 {font-size: 40px;}
+.font-46 {font-size: 44px;}
+.font-56 {font-size: 56px;}
+.h-1 {height: 1px; background: #c4b473;}
+.panel {background: unset;border:unset;}
+
+.features ul {font-size: 15px; list-style: none; margin: 0px; padding: 0px;}
+.features ul li { margin: 5px 0px; padding-left: 2em;}
+.features ul li:before { font-family: 'FontAwesome';content: '\f00c'; position: absolute; margin-left: -2em;}
+
+.benefits ul {list-style: none; margin: 0px; padding: 0px;}
+.benefits ul li { margin: 1em 0px; padding-left: 2em;}
+.benefits ul li:first-child { margin: 0px 0px 1em 0px; padding-left: 2em;}
+.benefits ul li:before { font-family: 'FontAwesome';content: '\f00c'; position: absolute; margin-left: -2em;}
+
+ul.features {font-size: 15px; list-style: none; margin: 0px; padding: 0px;color:#606060;}
+ul.features li { margin: 5px 0px; padding-left: 2em;font-family:'Open Sans', sans-sans-serif;}
+ul.features li:before { font-family: 'FontAwesome';content: '\f00c'; position: absolute; margin-left: -2em;}
+
+.proof {background: url({{ asset('images/sweeps/car5.jpg') }}) no-repeat; background-size: 100% 100% !important;-webkit-background-size: 100% 100% !important;background-repeat: no-repeat !important;}
+.proof.sweepstakes4 {background: url(https://d2q2bkkwoz3pe2.cloudfront.net/thumbnails/proof_bg.jpg) no-repeat; }
+.proof .winner.even {display: flex; flex-direction: row-reverse; margin-top: 20px}
+.proof .winner.odd {display: flex; flex-direction: row; margin-top: 20px}
+.extra-section.sweepstakes4 {background: url(https://d2q2bkkwoz3pe2.cloudfront.net/thumbnails/bg2.jpg) no-repeat; background-size: 100% 100% !important;-webkit-background-size: 100% 100% !important;background-repeat: no-repeat !important; }
+.extra-section.sweepstakes4 .extra-section-inner { padding: 20px 30px; background:rgba(171, 165, 165, 0.89); border-radius: 5px; }
+.discount-partners {margin: 10px 0px 20px 0px;}
+.discount-partners img {height: 40px; max-width: 15%; object-fit: contain; margin: 10px 10px;}
+.faq-section {background:rgba(136, 136, 136, 0.27);}
+.faq-section nav.faqs { border-radius: 4px; background-color: rgb(242, 242, 242); }
+.faq-section .faq { padding: 16px 0px; margin: 0px 16px; position: relative;}
+.faq-section .faq:not(:last-child) {border-bottom: 1px solid #e2e7e8;}
+.faq-section .faq > .question { text-decoration: none !important;}
+.faq-section .faq > .question > div { min-height: 40px; padding: 8px 12px; cursor: pointer; color: rgb(96, 96, 96); font-size: 20px;}
+.faq-section .faq > .question[aria-expanded='false'] > div {}
+.faq-section .faq  .answer div { font-size: 14px; color: rgb(96, 96, 96); padding: 20px 28px; }
+.sponsors.sweepstakes4 img {max-height: 100px;}
+.imgGrey1 {filter:grayscale(100%);-webkit-filter:grayscale(100%);filter:gray;-webkit-transition:all .6s ease;}
+.count-down-container {margin-top: 24px;}
+.count-down-container-closed{display:none;margin-top:50px;}
+.count-down-container-closed span{color:#C3122A;font-size:48px;font-weight:700;}
+.inputs-board {padding: 20px;}
+.shadow-20 {
+    -webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+}
+body.sweepstakes .count-down.large .unit { color: rgba(255, 255, 255, 0.4);}
+div.winner { padding: 20px 30px; }
+.contentInner {padding-left: 50px; padding-right: 50px;}
+.section2 {
+    padding-top:40px;
+    padding-bottom:40px;
+}
+@media screen and (max-width: 768px) {
+    .font-28 { font-size: 22px;}
+    .font-32 {font-size: 24px;}
+    .font-40 { font-size: 30px;}
+    .font-46 {font-size: 32px;}
+    .font-56 { font-size: 30px;}
+    a.elButton {font-size: 14px;}
+
+    .contentInner {padding-left: 0px; padding-right: 0px;}
+    .container-fluid > .navbar-header span {
+        font-size: 15px;
+    }
+    .count-down-container {margin-top: 20px;}
+    .inputs-board {padding-top: 10px;}
+    .extra-section div.font-22 > div {font-size: 20px !important;}
+    div.winner { padding: 20px 10px;}
+}
+@media screen and (max-width: 767px) {
+
+.proof .winner.even {display: flex; flex-direction: column; margin-top: 20px}
+.proof .winner.odd {display: flex; flex-direction: column; margin-top: 20px}
+.discount-partners img {max-width: 100%; max-height: 100px}
+}
+@media screen and (max-width: 400px) {
+    .font-40 { font-size: 25px;}
+    .extra-section div.font-22 > div {font-size: 16px !important;}
+    div.winner { padding: 20px 0px;}
+}
+@media screen and (max-width: 320px) {
+    .extra-section div.font-22 > div {font-size: 14px !important;}
+}

@@ -1,0 +1,119 @@
+restomods_webhook_stripe:
+    path:     /webhook/stripe
+    defaults: { _controller: RestomodsListingBundle:WebHook:stripe }
+    methods: [GET, POST]
+
+restomods_webhook_limelight:
+    path:     /webhook/limelight
+    defaults: { _controller: RestomodsListingBundle:WebHook:limelight }
+    methods: [GET, POST]
+
+restomods_webhook_join:
+    path:     /webhook/join
+    defaults: { _controller: RestomodsListingBundle:WebHook:join }
+    methods: [GET, POST]
+
+restomods_webhook_entries:
+    path:     /webhook/entries
+    defaults: { _controller: RestomodsListingBundle:WebHook:entries }
+    methods: [GET, POST]
+
+restomods_listing_index:
+    path:     /
+    defaults: { _controller: FrameworkBundle:Redirect:urlRedirect, path: "/sweepstakes/order", permanent: true }
+
+restomods_upload_csv:
+    path:     /upload-csv
+    defaults: { _controller: RestomodsListingBundle:Default:uploadCSV }
+    methods:  POST
+
+restomods_sweepstakes:
+    path:     /sweepstakes
+    defaults: { _controller: FrameworkBundle:Redirect:urlRedirect, path: "/sweepstakes/order", permanent: true }
+
+restomods_upload_media:
+    path:     /upload-media
+    defaults: { _controller: RestomodsListingBundle:Default:uploadMedia}
+    methods:  POST
+
+restomods_sweepstakes_export:
+    path:     /sweepstakes/export/{id}
+    defaults: { _controller: RestomodsListingBundle:Default:exportToCsv ,id: null }
+
+restomods_cancel_subscription:
+    path:   /cancel-subscription
+    defaults: { _controller: ApplicationSonataUserBundle:ProfileFOSUser1:cancelSubscription }
+    methods: POST
+
+restomods_stripe_refund_charge:
+    path: /admin/refund-charge/{chargeId}
+    defaults: { _controller: RestomodsListingBundle:Stripe:refund }
+    methods: GET
+
+restomods_limelight_refund_order:
+    path: /admin/refund-order/{orderId}
+    defaults: { _controller: RestomodsListingBundle:LimeLight:refund }
+    methods: GET
+
+restomods_sweepstakes_register:
+    path: /sweepstakes/register
+    defaults: { _controller: ApplicationSonataUserBundle:RegistrationFOSUser1:register}
+    methods: POST
+
+restomods_referral:
+    path: /referral/{code}
+    defaults: { _controller: ApplicationSonataUserBundle:RegistrationFOSUser1:register}
+    methods: [GET,POST]
+
+restomods_sweepstakes_sign_up:
+    path:     /sweepstakes/sign-up
+    defaults: { _controller: RestomodsListingBundle:Default:signUp }
+    methods: POST
+
+restomods_stripe_cancel_subscription:
+    path: /admin/cancel-subscription/{user}/{subscriptionId}
+    defaults: { _controller: RestomodsListingBundle:Stripe:cancel }
+    methods: GET
+
+restomods_limelight_cancel_subscription:
+    path: /admin/cancel-limelight-subscription/{user}/{orderId}
+    defaults: { _controller: RestomodsListingBundle:LimeLight:cancel }
+    methods: GET
+
+restomods_sweepstakes_visit:
+    path:     /sweepstakes/visit
+    defaults: { _controller: RestomodsListingBundle:Sweepstakes:visit }
+
+restomods_sweepstakes_preview:
+    path:     /sweepstakes/preview/{type}
+    defaults: { _controller: RestomodsListingBundle:Sweepstakes:preview, type: 'order' }
+
+restomods_sweepstakes_order:
+    path:     /sweepstakes/order
+    defaults: { _controller: RestomodsListingBundle:Sweepstakes:order }
+
+restomods_sweepstakes_membership:
+    path:     /sweepstakes/membership
+    defaults: { _controller: RestomodsListingBundle:Sweepstakes:membership }
+
+restomods_sweepstakes_confirm:
+    path:     /sweepstakes/confirm
+    defaults: { _controller: RestomodsListingBundle:Sweepstakes:confirm }
+
+restomods_sweepstakes_over:
+    path:     /sweepstakes/over
+    defaults: { _controller: RestomodsListingBundle:Sweepstakes:over }
+
+restomods_commerce_landing:
+    path:     /store
+    defaults: { _controller: RestomodsListingBundle:Ecommerce:index }
+
+restomods_commerce_products:
+    path:     /store/products
+    methods: GET
+    defaults: { _controller: RestomodsListingBundle:Ecommerce:products }
+
+restomods_profile_contact:
+    path:     /profile/contact
+    defaults: { _controller: RestomodsListingBundle:Default:contact }
+    methods:  POST

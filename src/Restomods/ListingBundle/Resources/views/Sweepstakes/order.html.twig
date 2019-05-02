@@ -1,0 +1,451 @@
+{% extends 'RestomodsListingBundle:Sweepstakes:base.html.twig' %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{% block google_tag_manager_data_layer %}
+<script>
+    dataLayer = [{
+        'flowStep': 'step1'
+    }];
+</script>
+
+<!-- Hotjar Tracking Code for https://restomods.com/sweepstakes/order2 -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1040689,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+{% endblock google_tag_manager_data_layer %}
+{% block extra_stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/extra/order.css') }}" />
+{% endblock extra_stylesheets %}
+{% block nav_sweepstakes %}
+<div class="sweepstakes flex layout-row wrap justify-center"><span class="strong">Sweepstakes Ends&nbsp;{{sweepstakes.endDate | date_modify('-5 hours') | date('F jS, Y')}}</span></div>
+{% endblock nav_sweepstakes %}
+{% block body %}
+<div class="row">
+    <div class="flex layout-col">
+        <div class="body flex layout-col" style="background-image: linear-gradient(to bottom, #0F8790 , #6BCACE);">
+            <div class="contentInner flex layout-col">
+
+                <div class="flex layout-col center" style="padding: 30px 0px;">
+                    <span class="white font-28 text-center">Do You Deserve a Luxury Getaway and Some Pampering In your Life?</span>
+                    <span class="brown font-28 strong text-center">Win An All-Expenses Paid DREAM SPA & BEAUTY MAKEOVER GETAWAY
+for You and Your Bestie or {{sweepstakes.prize}} in CASH</span>
+                </div>
+                <div class="h-1"></div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-7 flex layout-col center" style="padding: 40px 20px 20px 20px;">
+                        {% if sweepstakes.video %}
+                            {% if 'youtube' in sweepstakes.video %}
+                            <div class="embed-responsive embed-responsive-4by3" style="width: 100%;">
+                                <iframe class="embed-responsive-item" data-src="{{sweepstakes.video}}?autoplay=0&modestbranding=1&controls=1&showinfo=0&rel=0&hd=1&wmode=transparent"></iframe>
+                            </div>
+                            {% else %}
+                                <div class="" style="width: 100%;">
+                                    <script src="https://fast.wistia.com/embed/medias/{{sweepstakes.video}}.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_{{sweepstakes.video}} videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/{{sweepstakes.video}}/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>
+                                </div>
+                            {% endif %}
+                        {% else %}
+                        <div class="embed-responsive embed-responsive-4by3" style="width: 100%">
+                            <img class="img-responsive" style="margin:auto;" src="{{ sweepstakes.featuredImage1 | imagine_filter('original') | replace({'http:':restomods_url_scheme}) }}" />
+                        </div>
+                        {% endif %}
+                        <span class="black font-32 strong text-center" style="margin-top:24px">Hurry, Your Chance To Enter This Giveaway Is Only Available For a Limited-Time!</span>
+                        <div class="count-down-container fit-width flex center justify-center">
+                            <div class="count-down large">
+                                <div class="flex layout-row timer text-center no-margin strong" id="countdown-timer">
+                                    <div class="days">00</div>
+                                    <div class="hours">00</div>
+                                    <div class="minutes">00</div>
+                                    <div class="seconds">00</div>
+                                </div>
+                                <div class="flex layout-row unit text-center no-margin" id="countdown-timer-unit">
+                                    <div class="days">DAYS</div>
+                                    <div class="">HOURS</div>
+                                    <div class="">MINUTES</div>
+                                    <div class="">SECONDS</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="count-down-container-closed fit-width flex center justify-center">
+                            <div class="flex center justify-center">
+                                <span>PICKING THE WINNER</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-5 inputs-board" style="">
+
+                        <div class="text-center">
+                            <span class="white font-56 strong text-center">Don't Miss Your Chance To Win</span>
+                        </div>
+                        <div class="text-center" style="margin-top:24px">
+                            <span class="brown font-20 strong text-center">To Celebrate CRUSHXO's New 2019 Beauty Collection We Want to Celebrate YOU!</span>
+                        </div>
+                        <div class="text-center" style="margin-top:12px">
+                            <span class="white font-20 text-center">So, we’re giving away the ultimate dream relaxation, rejuvenation, and glam trip for you and a friend with VIP travel and accomodations, PLUS a celebrity makeup artist makeover!</span>
+                        </div>
+
+                        {% include 'RestomodsListingBundle:Sweepstakes:order_form.html.twig' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="body flex layout-col white-bg section">
+            <div class="contentInner flex layout-col" style="width: 100%">
+                <div class="layout-row layout-xs-col flex">
+                    <div class="text-center flex-1" style="padding:16px;">
+                        <img style="width:100%;max-height:36px;object-fit:contain" src="{{ asset('images/sweeps/wwd_500x.png') }}"></a>
+                    </div>
+                    <div class="text-center flex-1" style="padding:16px;">
+                        <img style="width:100%;max-height:36px;object-fit:contain" src="{{ asset('images/sweeps/refinery29_500x.png') }}"></a>
+                    </div>
+                    <div class="text-center flex-1" style="padding:16px;">
+                        <img style="width:100%;max-height:36px;object-fit:contain" src="{{ asset('images/sweeps/allure_500x.png') }}"></a>
+                    </div>
+                    <div class="text-center flex-1" style="padding:16px;">
+                        <img style="width:100%;max-height:36px;object-fit:contain" src="{{ asset('images/sweeps/elle_500x.png') }}"></a>
+                    </div>
+                    <div class="text-center flex-1" style="padding:16px;">
+                        <img style="width:100%;max-height:36px;object-fit:contain" src="{{ asset('images/sweeps/people_500x.png') }}"></a>
+                    </div>
+                    <div class="text-center flex-1" style="padding:16px;">
+                        <img style="width:100%;max-height:36px;object-fit:contain" src="{{ asset('images/sweeps/wwd_500x.png') }}"></a>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="h-1" style="margin-right: 12%;margin-left: 12%;"></div>
+                </div>
+                <div class="section">
+                    <div class="brown font-28 text-center lh-normal" style="margin-bottom:12px;">{{sweepstakes.carInfoTitle | raw}} </div>
+                    <div class="row flex layout-row layout-xs-col">
+                        {% for image in sweepstakes.images %}
+                        <div class="flex-1" style="padding: 15px">
+                            <div class="" style="max-width:300px;margin:auto">
+                                <div class="aspect1-1">
+                                    <img class="thumbnail img-responsive shadow-20" style="margin:auto;padding:unset" src="{{ image.src | imagine_filter('small') | replace({'http:':restomods_url_scheme}) }}" />
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {%if sweepstakes.carInfoFeatures %}
+                    <div class="features flex layout-col semi-gray-bg corner-radius4" style="padding: 20px 40px;color:#888888;">
+                        {{ sweepstakes.carInfoFeatures | raw }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="white-bg">
+            <div class="contentInner row">
+                <div class="col-xs-12 section2">
+                    <div class="col-xs-12 flex layout-row layout-xs-col center">
+                        <div class="col-xs-12 col-sm-6 text-center">
+                            <div class="col-xs-12 font-28 brown strong">
+                                RUNNER UP:
+                            </div>
+                            <div class="col-xs-12 font-22 brown">
+                                $500 CRUSHXO Gift Card<br>$1,000 Cash
+                            </div>
+                            <img style="width:100%;max-width:475px" src="{{ asset('images/sweeps/crush01.png') }}"></a>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 text-center">
+                            <img style="width:100%;max-width:332px" src="{{ asset('images/sweeps/crush02.png') }}"></a>
+                            <div class="col-xs-12 font-28 brown strong">
+                                3rd PLACE (10X)
+                            </div>
+                            <div class="col-xs-12 font-22 brown">
+                                Ten lucky winners will receive:<br>
+                                $250 <b>CRUSH</b>XO Gift Card
+                                $250 CASH
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xs-12 section">
+                    <div class="h-1" style="margin-right: 12%;margin-left: 12%;"></div>
+                </div>
+                <div class="col-xs-12 section2">
+                    <div class="col-xs-12 text-center font-28 brown strong">
+                        What is CRUSHXO, the Beauty Brand that Has Social Media Buzzing?
+                    </div>
+                    <div class="col-xs-12 text-center font-22 brown">
+                        A collaboration between top beauty experts, a celebrity makeup artist, social media influencers, and powerful nonprofits making the world a better place! Together, we’ve launched the perfect cosmetics that last, look great, and leave you feeling good.
+                    </div>
+                    <div class="col-xs-12 flex layout-row layout-xs-col center">
+                        <div class="col-xs-12 col-sm-6 sub-section">
+                            <img style="max-width:100%;" src="{{ asset('images/sweeps/crush03.png') }}"></a>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 font-20 dark-gray text-center layout-col flex sub-section">
+                            <p class="">
+                                Our high-quality, cruelty and paraben-free products are infused with gemstones like Rose Quartz, Sapphire, Jade, Amethyst, and Tourmaline — with unique properties that promote positive energy, so you can radiate on a whole new level.
+                            </p>
+                            <p class="">
+                                Used by top make up artists when they need the best for their celebrity clients. Our gemstones products, give their clients the special glow everyone will notice.
+                            </p>
+                            <span class="">
+                                From Lip Gloss to Restorative Face Cream, our products increase your glow inside and out.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 section">
+                    <div class="h-1" style="margin-right: 12%;margin-left: 12%;"></div>
+                </div>
+
+                <div class="col-xs-12 section2">
+                    <div class="col-xs-12 text-center font-28 brown">
+                        <b>What Makes CRUSH</b>XO <b>Beautiful</b>
+                    </div>
+                    <div class="col-xs-12 text-center font-22 brown">
+                        Real Products, Real Purpose
+                    </div>
+                    <div class="col-xs-12 flex layout-row layout-xs-col center">
+                        <div class="col-xs-12 col-sm-6 font-20 dark-gray text-center layout-col flex sub-section">
+                            <p class="">
+                                Our products come with a purpose. We work with social media influencers with millions of followers to not only promote our brand, but to promote the causes we care about.
+                            </p>
+                            <p class="">
+                                We get them involved first hand with the nonprofit causes we support, such as hosting events to raise awareness, encouraging fans to donate, getting directly involved, and more.
+                            </p>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 sub-section">
+                            <img style="max-width:100%;" src="{{ asset('images/sweeps/crush04.jpg') }}"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 section">
+                    <div class="h-1" style="margin-right: 12%;margin-left: 12%;"></div>
+                </div>
+
+                <div class="col-xs-12 section2">
+                    <div class="col-xs-12 text-center font-28 brown strong" style="margin-bottom:20px">
+                        Are You Ready to WIN All the Experiences and Perks You Need for a Worry-Free, Dream Getaway for You and a Friend!
+                    </div>
+                    <div class="col-xs-12 text-center">
+                        <img style="max-width:100%;" src="{{ asset('images/sweeps/crush05.jpg') }}"></a>
+                    </div>
+                    <div class="col-xs-12 section">
+                        <div class="flex layout-row layout-xs-col">
+                            <ul class="flex-1 features">
+                                <li>Relax in first or business class on your flight, with complimentary meal and champagne</li>
+                                <li>Get picked up in style from the airport. Your return transportation is provided as well </li>
+                                <li>Enjoy the super comfort of your W Hotel room</li>
+                                <li>You’ll have $1,000 in cash to cover any trip expenses you’d like</li>
+                            </ul>
+
+                            <ul class="flex-1 features">
+                                <li>Slip into rejuvenation mode as you experience your choice of treatments including massages, facials, and more at Bliss Spa</li>
+                                <li>Spend an afternoon shopping at Nordstrom, and splurge with your $1,000 gift card</li>
+                                <li>Check out some of LA or NYC’s hotspot restaurants with your 3 nights of included dinners. We’ll even help you book a great spot!</li>
+                            </ul>
+
+                            <ul class="flex-1 features">
+                                <li>Get amazing, personalized beauty tips from our celebrity makeup artist, as you and your friend get a celeb makeover</li>
+                                <li>Go crazy in the CRUSHXO.com online store with your $500 gift card, and stock up on your favorites!</li>
+                                <li> Look good on the outside, and feel great on the inside by letting us know which nonprofit you’d like us to donate $500 to on your behalf!</li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 flex layout-row center justify-center">
+                            <a href="#" class="elButton red normal" style="margin-top: 20px;width:unset;">
+                                <span class="main">Enter For Your Chance To Become Our Next Winner</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 section">
+                    <div class="col-xs-12 text-center font-28 brown strong">
+                        You Get So Much More Value with CRUSHXO...
+                    </div>
+                    <div class="col-xs-12 font-16 dark-gray" style="margin-top:20px">
+                        We know the Dream Spa & Beauty Makeover for you and a friend, or the $10,000 in CASH is enough, but check out all the other perks each month!
+                    </div>
+                    <div class="col-xs-12 section">
+                        <ul class="flex-1 features">
+                            <li><b>CRUSHXO Discounts: </b>Get an automatic 10% off on any CRUSHXO beauty product.</li>
+                            <li><b>CRUSH Life Monthly: </b>Monthly exclusive guide to living your best life, filled with the latest tips and discoveries for self-empowerment, self-love, boosting positive energy, manifesting your wishes, and living powerfully.</li>
+                            <li><b>15 Chances to Win: </b>Add 15 chances to win an incredible prize package or cash!</li>
+                            <li><b>Bonus Tickets: </b>Any time you purchase one of our amazing CRUSHXO beauty products, you’ll automatically get an additional ticket entry to win the prize package!</li>
+                            <li><b>Giving Back Automatically: </b>With a CRUSHXO membership, you will know that a portion of proceeds from every sale goes to crucial nonprofit causes making the world a better place for women and girls in need.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 section">
+                    <div class="col-xs-12 text-center font-28 brown strong">CAUSES YOUR CRUSHXO PURCHASES SUPPORT</div>
+                </div>
+                <div class="col-xs-12 section">
+                    <div class="flex layout-row layout-xs-col">
+                        <div class="flex-1">
+                            <div class="col-xs-12 flex layout-row center justify-center">
+                                <div style="width:100%;max-width:350px">
+                                    <div class="aspect3-2">
+                                        <img style="object-fit:contain" src="{{ asset('images/sweeps/keep-a-breast.png') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="strong font-16 dark-gray">
+                                    Keep A Breast Foundation
+                                </div>
+                                <div class="font-16 dark-gray">
+                                    A 501 (c) 3 nonprofit, focused on breast cancer prevention through their free, early-detection, self-exam mobile app.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="col-xs-12 flex layout-row center justify-center">
+                                <div style="width:100%;max-width:350px">
+                                    <div class="aspect3-2">
+                                        <img style="object-fit:contain" src="{{ asset('images/sweeps/invisible-girl-project.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="strong font-16 dark-gray">
+                                    Keep A Breast Foundation
+                                </div>
+                                <div class="font-16 dark-gray">
+                                    A 501 (c) 3 nonprofit, focused on breast cancer prevention through their free, early-detection, self-exam mobile app.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="col-xs-12 flex layout-row center justify-center">
+                                <div style="width:100%;max-width:350px">
+                                    <div class="aspect3-2">
+                                        <img style="object-fit:contain" src="{{ asset('images/sweeps/jlmc-logo-header.png') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="strong font-16 dark-gray">
+                                    Keep A Breast Foundation
+                                </div>
+                                <div class="font-16 dark-gray">
+                                    A 501 (c) 3 nonprofit, focused on breast cancer prevention through their free, early-detection, self-exam mobile app.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 section2 flex layout-row center justify-center">
+                        <a href="#" class="elButton red normal" style="margin-top: 20px;width:unset">
+                            <span class="main">Don’t Wait! Claim Your Chance to Win the Dream Getaway or $10,000 in CASH!</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer body flex layout-col section" style="background: #f2f2f2">
+            <div class="contentInner flex layout-col dark-gray" style="margin-bottom:40px">
+                <div class="font-16 text-center">{{sweepstakes.termsAndCondition | raw}}</div>
+                <div class="font-16 text-center">
+                    NEED TO CONTACT US? <a href="https://crushxo.com/pages/contact">Contact Us - CLICK HERE</a>
+                </div>
+                <div class="font-16 flex layout-row wrap copyright center justify-center">
+                    <span class="text-center">Copyright 2019</span>
+                    <span class="text-center">&nbsp;|&nbsp;</span>
+                    <span class="text-center">CrushXO LLC</span>
+                    <span class="text-center">&nbsp;|&nbsp;</span>
+                    <a href="/privacy-policy" target="_blank">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="official-rules" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">CrushXO "Ultimate Spa Getaway" Sweepstakes Official Rules</h4>
+          </div>
+          <div class="modal-body">
+            {% include 'RestomodsListingBundle:Sweepstakes:official_rules.html.twig' %}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+</div>
+{% endblock body %}
+{% block extra_javascripts %}
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+{% if restomods_limelight_threed_verify_enabled %}
+<script src="https://cdn.3dsintegrator.com/threeds.min.latest.js"></script>
+<script type="application/javascript">
+var id       = document.querySelector('[data-threeds=id]');
+var uniqueId = function()
+{
+   return 'id-' + Math.random().toString(36).substr(2, 16);
+};
+id.value = uniqueId();
+
+var formName = $('#form_order').attr('name');
+
+var tds = new ThreeDS(
+   'form_order',
+   '2mX9cFsooqK4qZSFGL4iZRg56ouiAGLg',
+   null,
+   {
+      endpoint   : 'https://sandbox-api.3dsintegrator.com',
+      verbose    : true, // For testing purposes (Set to false in production mode)
+      addResultToForm : true,
+      eciInputId : "'" + formName + "[eci]'",
+      cavvInputId: "'" + formName + "[cavv]'",
+      xidInputId : "'" + formName + "[xid]'",
+      statusInputId : "'" + formName + "[status]'"
+   }
+);
+</script>
+{% endif %}
+<script type="text/javascript">
+
+    function init() {
+        var vidDefer = document.getElementsByTagName('iframe');
+        for (var i=0; i<vidDefer.length; i++) {
+            if(vidDefer[i].getAttribute('data-src')) {
+            vidDefer[i].setAttribute('src',vidDefer[i].getAttribute('data-src'));
+            }
+        }
+
+        importScript("https://d2q2bkkwoz3pe2.cloudfront.net/js/card-js.min.js?v2");
+        importScript("https://d2q2bkkwoz3pe2.cloudfront.net/js/lazyload.min.js", function() {
+            $("div.lazyload").lazyload();
+            $("img.lazyload").lazyload();
+        });
+        importScript("https://d2q2bkkwoz3pe2.cloudfront.net/js/jquery.inputmask.bundle.js", function() {
+            $(":input").inputmask();
+        });
+
+        initializeOrderPage({{ sweepstakes.endDate.timestamp * 1000}}, true);
+    }
+
+    window.onload = init;
+</script>
+
+<div id="fb-root"></div>
+<script>(function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js     = d.createElement(s);
+        js.id  = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+{% endblock extra_javascripts %}

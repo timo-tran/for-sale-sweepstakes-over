@@ -1,0 +1,9 @@
+{% extends 'RestomodsListingBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="rm-registration-form-container">
+        <p>
+            {{ 'resetting.check_email'|trans({'%email%': email}, 'FOSUserBundle') }}
+        </p>
+    </div>
+{% endblock body %}

@@ -1,0 +1,90 @@
+/* .container-fluid > nav.navbar{margin-bottom:0px;}
+.container-fluid > .navbar-header{background:#E43B2C;margin-right:-30px;margin-left:-30px;min-height:80px;padding:15px calc(5vw);display:flex;flex-wrap:wrap;align-items:center;}
+.container-fluid > .navbar-header .contentInner{display:flex;flex-direction:row;align-items:center;justify-content:center;width:100%;}
+.container-fluid > .navbar-header .navbar-brand{height:auto;margin:0px;padding:0px;}
+.container-fluid > .navbar-header .contentInner > div{text-align:right;max-width:100%;}
+.container-fluid > .navbar-header span{font-size:18px;color:white;} */
+body{font-family:Roboto, Helvetica, sans-serif;-webkit-font-smoothing:antialiased;}
+.abel {font-family:Abel, Helvetica, sans-serif;}
+.gudea {font-family:Gudea, Helvetica, sans-serif;}
+.red {color:rgb(224, 18, 0);}
+.white {color:white;}
+.strong {font-weight: bold;}
+.font-23 {font-size: 23px;}
+.font-40 {font-size: 40px;}
+.flex.layout-col{flex-direction:column;}
+.flex-1{flex:1 0;}
+.aspect1-1{width:100%;padding-top:100%;position:relative;}
+.aspect3-2{width:100%;padding-top:66.66%;position:relative;}
+.aspect1-1 img{width:100%;height:100%;top:0;right:0;left:0;bottom:0;position:absolute;object-fit:cover;}
+.aspect3-2 img{width:100%;height:100%;top:0;right:0;left:0;bottom:0;position:absolute;object-fit:cover;}
+nav.navbar{background:rgba(0, 0, 0, 0.7);font-size:20px;color:rgb(237, 239, 240);border:unset;}
+.section1{margin-bottom:32px;padding-bottom:32px;}
+.section1 .headline{font-size:50px;font-weight:700;color:rgb(228, 59, 44);line-height: 1em;}
+.section1 .large-text{font-size:30px;color:white;}
+.section1 .large-text b{color:rgb(150, 204, 36);}
+.section1 .text{font-size:22px;color:rgb(237, 239, 240);}
+.section1 img {border-radius: 8px;}
+.section1 a.link {color:rgb(238, 233, 234);text-decoration: none;font-size: 23px;width:100%;}
+.section1 a.link:hover {text-decoration: underline;}
+.section2{padding:48px 0px;}
+.section2 .headline{line-height:1;padding:10px 32px;background:rgba(228, 59, 44, 0.29);border-color:rgb(215, 21, 16);border-width:3px;border-style:dashed;border-radius:20px;}
+.section2 .headline .small {font-size:30px;font-family:FontAwesome;letter-spacing:3px;}
+.section2 .headline .large{font-size:50px;font-weight: bold;}
+.products {min-height: 300px;}
+.products-placeholder {min-height: 300px;align-items: center;justify-content: center;display: flex;}
+.products-placeholder .loading {font-size:32px;}
+.products {margin-top:32px;}
+.products .product-inner {max-width:260px;margin:auto;}
+.products .product .name {margin-top:10px;font-size:22px;color:rgb(71, 71, 71);font-weight:700;}
+.products .product .image {width:100%;padding-top:100%;position:relative;}
+.products .product .image img{width:100%;height:100%;top:0;right:0;left:0;bottom:0;position:absolute;object-fit:cover;}
+.products .product .price {margin-top:10px;font-size:18px;color:rgb(71, 71, 71);}
+.products .product .action {margin-top:20px;color: #fff;font-weight: 600;background-color: rgb(215, 55, 13);font-size: 16px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.2);border:1px solid rgba(0,0,0,0.2);padding:10px 15px;border-radius:6px;}
+.section-car-info .header b{color:rgba(224,18,0);}
+.features ul {color: white; font-size: 15px; list-style: none; margin: 0px; padding: 0px;}
+.features ul li { margin: 5px 0px; padding-left: 2em;}
+.features ul li:before { font-family: 'FontAwesome';content: '\f00c'; position: absolute; margin-left: -2em;}
+.section-winners .header {font-weight: 700;font-family:Abel, Helvetica, sans-serif;font-size:38px;color:white;}
+.section-winners .winner {padding:20px 0px;flex-wrap: wrap;}
+.section-winners .winner .text {font-size:20px;color:white;}
+.section-winners .winner .text span {padding:6px 0px;}
+.section-winners .winner .text .name {font-size:26px;color: rgb(215, 21, 16);letter-spacing: 3px;font-family:"Nunito", Helvetica, sans-serif;font-weight:bold;}
+.section-winners .winner .text .prize {font-size:26px;color: rgb(215, 21, 16);letter-spacing: 3px;font-family:"Nunito", Helvetica, sans-serif;font-weight:bold;}
+.section-winners .winner .text .saying {font-size:22px;font-family:Gudea, Helvetica, sans-serif;font-style:italic;}
+.section-winners .winner .text .saying b{color: rgb(255, 144, 0);}
+.section-winners .winner .text .desc {font-size:22px;font-family:Gudea, Helvetica, sans-serif;font-weight:bold;font-style:italic;}
+.section-winners .winner.odd {display: flex; flex-direction: row-reverse; margin-top: 20px}
+.section-winners .winner.even {display: flex; flex-direction: row; margin-top: 20px}
+.footer{font-size:16px;padding:50px 0px;color:rgba(255,255,255,0.7);}
+.footer a {color:white;}
+.row.equal{ display: flex;display: -webkit-flex;flex-wrap: wrap;justify-content: center;}
+.flex.center{ display: flex;display: -webkit-flex;flex-wrap: wrap;justify-content: center;}
+.elButton{text-decoration: unset; flex-direction:column;display:flex;align-items:center;width:100%;padding:13px 35px;border:1px solid rgba(0,0,0,0.2);box-shadow:inset 0 1px 0 rgba(255,255,255,0.2);border-radius:4px;color:white;}
+.elButton:hover:not(.loading):not([disabled]){box-shadow:inset 0 2px 2px 0 rgba(255,255,255,0.22), 0 233px 233px 0 rgba(255,255,255,0.12);outline:0;text-decoration:none;cursor:pointer;}
+.elButton.red{background-color:rgb(228, 59, 44);}
+.elButton.red:hover:not(.loading):not([disabled]){background-color:rgb(237, 75, 47);color:white;}
+.elButton.large .main{font-size:27px;font-weight: bold;}
+.elButton.large .sub{font-size:22px;}
+
+@media (min-width: 768px) {
+    .text-sm-center{text-align:center;}
+    .text-sm-left{text-align:left;}
+    .text-sm-right{text-align:right;}
+}
+@media (min-width: 992px) {
+    .products .product:nth-child(n+4) {margin-top:24px;}
+}
+@media (max-width: 767px) {
+    .col-right{margin-top:20px;}
+    .products .product:nth-child(n+2) {margin-top:24px;}
+    .section2 .headline .small {font-size:25px;}
+    .section2 .headline .large{font-size:40px;}
+    .elButton.large .main{font-size:22px;font-weight: bold;}
+    .elButton.large .sub{font-size:18px;}
+    .flex.layout-xs-col {flex-direction: column !important;}
+}
+@media (max-width: 991px) {
+    .col-md-right{margin-top:20px;}
+    .products .product:nth-child(n+3) {margin-top:24px;}
+}

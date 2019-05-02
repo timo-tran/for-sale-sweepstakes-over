@@ -1,0 +1,56 @@
+{% extends 'RestomodsListingBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="rm-registration-form-container">
+        <div class="rm-registration-form-title">
+            <h2>Log In</h2>
+        </div>
+        <div class="panel-body">
+            {% if error %}
+                <div class="alert alert-danger alert-error">
+                    {{ error.messageKey|trans(error.messageData, 'security') }}
+                </div>
+            {% endif %}
+
+            <div class="row">
+                <div class="col-xs-12">
+                    {% include 'SonataCoreBundle:FlashMessage:render.html.twig' %}
+                </div>
+            </div>
+
+            <!--
+            {% for label, messages in app.session.flashbag.all %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label|sonata_status_class }} alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        {{ message|raw }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            -->
+
+            <form action="{{ path("fos_user_security_check") }}" method="post" role="form">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+
+                <div class="form-group">
+                    <label for="username" class="control-label required">Username or email</label>
+                    <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required="required"
+                           placeholder="Enter your username or email"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="control-label">{{ 'security.login.password'|trans({}, 'SonataUserBundle') }}</label>
+                    <input type="password" class="form-control" id="password" name="_password" required="required" placeholder="Enter your password"/>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" id="_submit" name="_submit" class="btn btn-primary">Log In</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <div class="rm-login-reset-password-container">
+        <a href="{{ path('fos_user_resetting_request') }}">Reset password</a>
+    </div>
+{% endblock body %}

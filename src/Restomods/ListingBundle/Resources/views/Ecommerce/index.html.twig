@@ -1,0 +1,178 @@
+{% extends 'RestomodsListingBundle:Ecommerce:base.html.twig' %}
+{% block google_tag_manager_data_layer %}
+{% endblock google_tag_manager_data_layer %}
+{% block extra_stylesheets %}
+{% endblock extra_stylesheets %}
+{% block body %}
+<div class="row" style="background:rgba(0, 0, 0, 0.7);">
+    <div class="container section1">
+        <div class="col-xs-12 abel" style="text-align: center; font-size: 32px; color: rgb(255, 255, 255);">
+            Are you ready for the&nbsp;<font style="color:rgb(150, 204, 36); font-weight:bold">RUSH of WINNING this {{sweepstakes.name}}</font> or {{sweepstakes.prize}} ?
+        </div>
+        <div class="col-xs-12" style="margin-top:20px;">
+            {% if sweepstakes.video %}
+                {% if 'youtube' in sweepstakes.video %}
+                <div class="embed-responsive embed-responsive-4by3" style="width: 100%;">
+                    <iframe class="embed-responsive-item" data-src="{{sweepstakes.video}}?autoplay=0&modestbranding=1&controls=1&showinfo=0&rel=0&hd=1&wmode=transparent"></iframe>
+                </div>
+                {% else %}
+                    <div class="" style="width: 100%;">
+                        <script src="https://fast.wistia.com/embed/medias/{{sweepstakes.video}}.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_{{sweepstakes.video}} videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/{{sweepstakes.video}}/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>
+                    </div>
+                {% endif %}
+            {% else %}
+                <div class="embed-responsive embed-responsive-4by3" style="width: 100%">
+                    <img class="img-responsive" style="margin:auto;" src="{{ sweepstakes.featuredImage1 | imagine_filter('original') | replace({'http:':restomods_url_scheme}) }}" />
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-xs-12" style="margin-top:20px">
+            <a class="elButton red large gudea smooth-scroll" href="#products">
+                <span class="main">Claim Your Entries <i class="fa_appended fa fa-angle-double-right"></i></span>
+                <span class="sub">Every $1 Spent = 1 Cobra Entry</span>
+            </a>
+        </div>
+        <div class="col-xs-12" style="text-align: center; margin-top:20px;">
+            <a class="link abel smooth-scroll" href="#previous-winners">
+                Need Proof You Can Win? Check Out Our <font class="red strong">Previous Winners</font>
+            </a>
+        </div>
+        <div class="col-xs-12" style="text-align: center;">
+            <a class="link abel smooth-scroll" href="#build-sheet">
+                Car Details? See the <font class="red strong">Build Sheet</font>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="row" style="background:white;">
+    <div class="container section2">
+
+        <div class="flex center" style="padding:0px 10px;">
+            <div class="headline text-center">
+                <div class="large red">Great Gear With A Bonus</div>
+                <div class="small">GET ONE ENTRY FOR EVERY $1 SPENT</div>
+            </div>
+        </div>
+        <div id="products" class="products row equal" style="display:none">
+
+        </div>
+        <div class="products-placeholder text-center">
+            <div class="loading">
+                <i class="fa fa-spinner fa-spin"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="build-sheet" class="row" style="background:rgba(136, 136, 136, 0.792157);padding:48px 0px;">
+    <div class="container section-car-info">
+        <div class="container contentInner flex layout-col" style="width: 100%;background:rgba(45,45,45,0.75);border-radius: 8px;">
+            <span class="white font-40 text-center abel header">{{sweepstakes.carInfoTitle | raw}} </span>
+            <div class="row flex layout-row layout-xs-col" style="">
+                {% for image in images %}
+                <div class="flex-1" style="padding: 15px">
+                    <div class="image-wrapper" style="width:100%;max-width:400px;margin:auto;">
+                        <div class="aspect3-2">
+                            <img class="thumbnail img-responsive" style="margin:auto;padding:unset;border:2px solid white;" src="{{image}}" />
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {%if sweepstakes.carInfoFeatures %}
+            <div class="features flex layout-col semi-gray-bg corner-radius4" style="padding: 20px;">
+                {{ sweepstakes.carInfoFeatures | raw }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="row" style="padding-top: 30px; padding-bottom: 30px;background:black;">
+    <div id="previous-winners" class="container section-winners">
+        <div class="contentInner flex layout-col">
+            <span class="header text-center">Hall of Winners:</span>
+            {% for winner in winners %}
+            <div class="container-fluid">
+                <div class="row winner {% if loop.index is divisibleby(2) %}odd{% else %}even{% endif %}">
+
+                    <div class="col-xs-12 col-sm-5">
+                        <div class="" style="width: 100%;">
+                            <script src="https://fast.wistia.com/embed/medias/{{winner.video}}.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_{{winner.video}} videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/{{winner.video}}/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-7 flex layout-col text">
+                        <span class="name">{{winner.name}}</span>
+                        <span class="saying"><b>&quot;</b>{{winner.saying}}<b>&quot;</b></span>
+                        <span class="desc">{{winner.desc}}</span>
+                        <span class="prize">{{winner.prize}}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="footer body flex layout-col section" style="background: black">
+        <div class="container">
+            <div class="text-center row">{{sweepstakes.termsAndCondition | raw}}</div>
+            <div class="row copyright text-center">
+                <a href="/privacy-policy" target="_blank">POLICY</a>
+                <span class="text-center">&nbsp;|&nbsp;</span>
+                <a href="/terms" target="_blank">TERMS</a>
+                <span class="text-center">&nbsp;|&nbsp;</span>
+                <a href="/contact-us" target="_blank">LINK</a>
+            </div>
+            <div class="row text-center" style="margin-top:8px;">
+                <span class="text-center">All Right Reserved - Restomods Media Inc.</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
+{% block extra_javascripts %}
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="//d2q2bkkwoz3pe2.cloudfront.net/js/lazyload.min.js"></script>
+<script type="text/javascript">
+jQuery(function ($) {
+    $(".lazyload").lazyload();
+    $.ajax({
+        type: "GET",
+        url:'/store/products',
+        success: function(response){
+            if(response){
+                var html = '';
+                response.forEach(function(product) {
+                    var productHtml = '<div class="product col-md-4 col-sm-6 col-xs-12 text-center"><div class="product-inner">' +
+                        '<a href="' + product.link + '"><div class="image"><img src="' + product.image + '" class="elIMG ximg" alt=""></div></a>' +
+                        '<div class="name">' + product.name + '</div>' +
+                        '<div class="price">' + product.price_html + '</div>' +
+                        '<div class=""><a class="action btn" href="' + product.link + '"><i class="fa fa-arrow-circle-o-right"></i> See Options</a></div>' +
+                        '</div></div>';
+                    html = html + productHtml;
+                });
+                $('.products').html(html);
+                $('.products').fadeIn();
+                $('.products-placeholder').fadeOut();
+            }
+        }
+    });
+
+    $('a.smooth-scroll').click(function(event) {
+        if(location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            if (target.length) {
+                event.preventDefault();
+                $('html, body').animate({
+                    scrollTop: target.offset().top
+                }, 300, function() {
+                });
+            }
+        }
+    });
+});
+</script>
+{% endblock extra_javascripts %}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}CRUSHXO | Be the Beauty. Be the Change{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,700|Roboto+Slab:300,400|Oswald:400,500,700|Montserrat:300,400,700" rel="stylesheet">
+    {% block stylesheets %}
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        {% stylesheets 'css/*' filter='cssrewrite' output='dist/main.css' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+        {% block extra_stylesheets %}{% endblock extra_stylesheets %}
+    {% endblock %}
+
+    <link rel="shortcut icon" href="https://cdn.shopify.com/s/files/1/0083/4289/6758/files/favicon-32x32_32x32.png?v=1534346683"/>
+    {% block metainfo %}
+        <meta name="description" content="Cruelty-free, paraben-free, purpose-driven beauty infused with crushed gemstones. 5% of proceeds go to charitable causes around the world.">
+        <meta property="og:locale" content="en_US"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="CRUSHXO | Be the Beauty. Be the Change"/>
+        <meta property="og:description" content="Cruelty-free, paraben-free, purpose-driven beauty infused with crushed gemstones. 5% of proceeds go to charitable causes around the world."/>
+        <meta property="og:url" content="https://crushxo.com/"/>
+        <meta property="og:site_name" content="CRUSHXO"/>
+        <meta property="og:image" content="http://cdn.shopify.com/s/files/1/0083/4289/6758/files/gigi_homepage_1920_final_83743298-8c67-4034-8d6c-abe4a7447dba.jpg?v=1538573360"/>
+    {% endblock metainfo %}
+    <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+    <script>
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+    </script>
+    {% set _google_tag_block = block('google_tag_block') %}
+    {% if _google_tag_block is not empty %}
+        {{ _google_tag_block | raw}}
+    {% else %}
+    <script>
+        googletag.cmd.push(function() {
+            var mapping = googletag.sizeMapping().
+                addSize([740, 100], [728, 90]).
+                addSize([0, 0], [300, 250]).build();
+            googletag.defineSlot('/41237242/for-sale-top', [[300, 250], [728, 90]], 'div-gpt-ad-1518893335150-0').defineSizeMapping(mapping).addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.pubads().collapseEmptyDivs();
+            googletag.enableServices();
+        });
+    </script>
+    {% endif %}
+</head>
+<body>
+{% if is_granted('ROLE_PREVIOUS_ADMIN') %}
+    <div class="container-fluid text-center" style="background:rgba(231,47,31,0.2);line-height:20px;font-size:12px;font-weight:bold;">
+        <a style="color:#000;" href="{{ path('restomods_listing_index', {'_switch_user': '_exit'}) }}"><i class="fa fa-sign-out"></i> Exit Impersonation</a>
+    </div>
+{% endif %}
+<div class="container-fluid">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                        aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                {% if app.request.get('_route') == 'fos_user_profile_show' %}
+                    <a class="navbar-brand" href="{{ path('restomods_listing_index') }}"><img alt="Brand" src="{{ asset('images/logo-white.png') }}"></a>
+                    {#<div class="sweeps-notice">Ultimate '69 Z28 Camaro Sweepstakes ends March 20,2018</div>#}
+                {% else %}
+                    <a class="navbar-brand" href="{{ path('restomods_listing_index') }}"><img alt="Brand" src="{{ asset('images/logo.png') }}"></a>
+                {% endif %}
+            </div>
+
+            {# TODO: Add class="active" to active link #}
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="rm-navbar nav navbar-nav">
+                    {% if app.user %}
+                        <li><a href="{{ path('sonata_user_profile_show') }}" class="glyphicons dashboard">Dashboard</a></li>
+                        <li><a href="{{ path('sonata_user_profile_edit') }}" class="glyphicons address_book">Edit profile</a></li>
+                        <li><a href="{{ path('sonata_user_change_password') }}" class="glyphicons rotation_lock">Change password</a></li>
+                        <li><a href="{{ path('sonata_user_profile_edit_authentication') }}" class="glyphicons settings">Settings</a></li>
+                    {% endif %}
+                    {% if not app.user %}
+                        <li><a href="{{ path('sonata_user_security_login') }}" class="glyphicons keys">Login</a></li>
+                        <li><a href="{{ path('sonata_user_registration_register') }}" class="glyphicons user_add">Register</a></li>
+                    {% endif %}
+                    <li><a href="{{ path('restomods_sweepstakes') }}" class="glyphicons crown">Sweepstakes</a></li>
+                    </li>
+                    <li><a href="//crushxo.com/pages/contact" class="glyphicons message_plus">Contact Us</a></li>
+                    <li><a href="//crushxo.com/pages/privacy-policy" class="glyphicons circle_info">Privacy Policy</a></li>
+                    {% if app.user %}
+                        <li><a href="{{ path('sonata_user_security_logout') }}" class="glyphicons power">Logout</a></li>
+                    {% endif %}
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    {% block body %}{% endblock %}
+</div>
+{% block javascripts %}
+    {% javascripts 'js/jquery.min.js' 'js/bootstrap.min.js' 'js/modernizr.js' 'js/slick.min.js' output='dist/vendor.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {% block extra_javascripts %}{% endblock extra_javascripts %}
+    {% if restomods_facebook_pixel_id %}
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '{{ restomods_facebook_pixel_id }}');
+        {% if restomods_facebook_pixel_id2 %}
+        fbq('init', '{{ restomods_facebook_pixel_id2 }}');
+        {% endif %}
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id={{ restomods_facebook_pixel_id }}&ev=PageView&noscript=1"/></noscript>
+    {% if restomods_facebook_pixel_id2 %}
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id={{ restomods_facebook_pixel_id2 }}&ev=PageView&noscript=1"/></noscript>
+    {% endif %}
+    <!-- End Facebook Pixel Code -->
+    {% endif %}
+    {% if restomods_google_analytics_id %}
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', '{{ restomods_google_analytics_id }}', 'auto');
+        ga('require', 'ec');
+    </script>
+    {% endif %}
+{% endblock %}
+</body>
+</html>

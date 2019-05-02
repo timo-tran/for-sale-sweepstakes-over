@@ -1,0 +1,18 @@
+{% extends 'RestomodsListingBundle::base.html.twig' %}
+{% block body %}
+    <div class="error-page">
+        <div class="row text-center">
+            <div class="col-sm-12">
+                    <h1>404</h1>
+                    <h3>Link is expired or already used.</h3>
+                    <h4>Please reset again.</h4>
+            </div>
+        </div>
+        <div class="row text-center action-row">
+            <div class="col-sm-12">
+                <a href="{{ path('restomods_listing_index') }}"><button class="btn btn-danger">GO HOME</button></a>
+                <a href="{{ path('fos_user_resetting_request') }}"><button class="btn btn-dark">RESET PASSWORD</button></a>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

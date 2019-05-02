@@ -1,0 +1,19 @@
+Sweepstakes Entry Confirmed!
+
+Thanks For Joining CrushXO!
+Your entries are counted and secure for our sweepstakes or 10k in cash.
+Sweepstakes Entries: {{ entries }}
+{% if purchases %}
+Your Product Receipt:
+{% for purchase in purchases %}
+{{ purchase.name }} : {{ purchase.price }}
+{% endfor %}
+{% endif %}
+
+To complete your premium sign up please set your password at here : {{ confirmationUrl }}
+After complete, you will be directed to your account dashboard : {{url('sonata_user_profile_show')}}
+
+Good luck!
+Dominique & The CrushXO Team
+750 N San Vicente Blvd #800
+West Hollywood, CA 90069

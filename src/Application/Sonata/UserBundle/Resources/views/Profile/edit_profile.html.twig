@@ -1,0 +1,13 @@
+{% extends "SonataUserBundle:Profile:action.html.twig" %}
+
+{% block sonata_profile_content %}
+    {% form_theme form 'bootstrap_3_layout.html.twig' %}
+    {{ form_errors(form) }}
+
+    <div class="rm-registration-form-container">
+        <div class="rm-registration-form-title">
+            <h2>{{ "title_user_account" | trans({}, 'SonataUserBundle') }} - {{ "title_user_edit_profile" | trans({}, 'SonataUserBundle') }}</h2>
+        </div>
+        {% include "SonataUserBundle:Profile:edit_profile_content.html.twig" %}
+    </div>
+{% endblock %}

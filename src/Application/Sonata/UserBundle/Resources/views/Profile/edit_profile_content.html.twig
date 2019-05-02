@@ -1,0 +1,6 @@
+{{ form_start(form, {'action': path('sonata_user_profile_edit')  }) }}
+    {{ form_widget(form) }}
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">{{ 'sonata_user_submit'|trans({}, 'SonataUserBundle') }}</button>
+    </div>
+{{ form_end(form) }}

@@ -1,0 +1,11 @@
+<h3>Contact message from <a href="{{ url('restomods_listing_index') }}">RestoMODS.com</a></h3>
+
+Hi {{ listing.user.username }}! The user {{ sender }} has sent you a message:
+<br>
+<p>
+Sender details:<br>
+Name: {{ sender }}<br>
+Email: {{ email }}<br>
+</p>
+
+<blockquote>{{ message }}</blockquote>

@@ -1,0 +1,54 @@
+{% extends 'RestomodsListingBundle::base.html.twig' %}
+
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block body %}
+    {% set payment_type = app.session.flashBag.get('payment_type') %}
+    {% if payment_type|length > 0 %}
+        {% set paying = true %}
+        {% set payment_type = payment_type[0] %}
+    {% endif %}
+
+    {% if paying is defined %}
+        <div class="rm-registration-thank-you-container">
+            <div class="row rm-register-thank-you">
+                <div class="col-md-12">
+                    <h1>Thank you!</h1>
+                    <h2>Your payment for your {{ payment_type }} was successful
+                        <span data-icon="&#xe19f;" class="icon rm-green"></span>
+                    </h2>
+                </div>
+            </div>
+            <div class="row rm-register-warning">
+                <div class="col-md-12">
+                    <div class="important">IMPORTANT!</div>
+                    <div>To access and manage your ad, you must register below.</div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <div class="rm-registration-form-container">
+        <div class="rm-registration-form-title">
+            <h2>{{ 'title_user_registration'|trans({}, 'SonataUserBundle') }}</h2>
+        </div>
+        <div class="panel-body">
+            {{ form_start(form) }}
+            {{ form_row(form.username, { 'attr': { 'placeholder': 'Enter your username' } }) }}
+
+            {{ form_row(form.email, { 'attr': { 'placeholder': 'Enter your email' } }) }}
+
+            {{ form_row(form.phone, { 'attr': { 'placeholder': 'Enter yout phone number' } }) }}
+
+            {{ form_row(form.plainPassword.first, { 'attr': { 'placeholder': 'Enter your password' } }) }}
+
+            {{ form_row(form.plainPassword.second, { 'label': 'Confirm password', 'attr': { 'placeholder': 'Confirm your password' } }) }}
+
+            {{ form_rest(form) }}
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}</button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock body %}

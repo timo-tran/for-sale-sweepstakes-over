@@ -1,0 +1,10 @@
+{% extends 'RestomodsListingBundle::base.html.twig' %}
+
+{% block body %}
+<div class="row">
+    <div class="col-xs-12">
+        {% include 'SonataCoreBundle:FlashMessage:render.html.twig' %}
+        {% block sonata_profile_content '' %}
+    </div>
+</div>
+{% endblock body %}

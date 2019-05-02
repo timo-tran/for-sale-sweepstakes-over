@@ -1,0 +1,26 @@
+{% extends 'RestomodsListingBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="rm-registration-form-container">
+        <div class="rm-registration-form-title">
+            <h2>{{ "title_user_resetting" | trans({}, 'SonataUserBundle') }}</h2>
+        </div>
+        <div class="panel-body">
+            <form action="{{ path('sonata_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
+                {% if invalid_username is defined %}
+                    <div class="alert alert-danger">{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}, 'FOSUserBundle') }}</div>
+                {% endif %}
+
+                <div class="form-group">
+                    <label for="username" class="control-label required">{{ 'resetting.request.username'|trans({}, 'FOSUserBundle') }} * </label>
+                    <input type="text" class="form-control" id="username" name="username" required="required"
+                           placeholder="Enter your username or email"/>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">{{ 'resetting.request.submit'|trans({}, 'FOSUserBundle') }}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock body %}

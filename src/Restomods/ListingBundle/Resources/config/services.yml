@@ -1,0 +1,127 @@
+services:
+    restomods.mailer:
+        class: Restomods\ListingBundle\Services\EmailService
+        arguments: ['@service_container', '@mailer', '@twig']
+
+    restomods.admin.event.listener:
+        class: Restomods\ListingBundle\EventListener\AdminEventListener
+        arguments: ['@service_container']
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
+            - { name: doctrine.event_listener, event: preRemove }
+
+    twig_portal_extension:
+        class: Restomods\ListingBundle\Twig\CustomExtension
+        tags:
+            - { name: 'twig.extension' }
+
+    restomods_listing.admin.faq:
+        class: Restomods\ListingBundle\Admin\FaqAdmin
+        arguments: [~, Restomods\ListingBundle\Entity\Faq, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: config, label: FAQ }
+
+    restomods_listing.admin.magazine:
+        class: Restomods\ListingBundle\Admin\MagazineAdmin
+        arguments: [~, Restomods\ListingBundle\Entity\Magazine, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: config, label: Magazine }
+
+    restomods_listing.admin.curatedautodiscount:
+        class: Restomods\ListingBundle\Admin\CuratedAutoDiscountAdmin
+        arguments: [~, Restomods\ListingBundle\Entity\CuratedAutoDiscount, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: config, label: 'Curated Auto Discount' }
+
+    restomods_listing.admin.settings:
+        class: Restomods\ListingBundle\Admin\SettingsAdmin
+        arguments: [~, Restomods\ListingBundle\Entity\Settings, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Administer, label: Settings, show_in_dashboard: false }
+    restomods_listing.admin.sweepstakes:
+        class:  Restomods\ListingBundle\Admin\SweepstakesAdmin
+        arguments: [~, Restomods\ListingBundle\Entity\Sweepstakes, RestomodsListingBundle:SweepstakesAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Sweepstakes, label: Sweepstakes }
+
+    restomods_listing.admin.sweepstakes_product:
+        class:  Restomods\ListingBundle\Admin\SweepstakesProductAdmin
+        arguments: [~, Restomods\ListingBundle\Entity\SweepstakesProduct, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Sweepstakes, label: Sweepstakes Products }
+
+    restomods_listing.admin.sweepstakes_user:
+        class:  Restomods\ListingBundle\Admin\SweepstakesUserEntriesAdmin
+        arguments: [~, Restomods\ListingBundle\Entity\SweepstakesUserEntries, RestomodsListingBundle:Admin/SweepstakesUserEntriesAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Sweepstakes, label: Sweepstakes Users }
+        calls:
+            - [setTemplate, [list, RestomodsListingBundle:Admin\SweepstakesUserEntries:list.html.twig] ]
+
+    restomods.admin.sweepstakes.media:
+        class: Restomods\ListingBundle\Admin\SweepstakesImagesAdmin
+        arguments: [~, Restomods\ListingBundle\Entity\SweepstakesImages, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Sweepstakes, label: Images, show_in_dashboard: false }
+
+    restomods.stripe:
+        class:      Restomods\ListingBundle\Helper\StripeHelper
+        arguments:
+            - '%restomods.stripe.secret_key%'
+            - '%restomods.stripe.publishable_key%'
+            - '%restomods.stripe.membership_plan%'
+            - '%restomods.stripe.single_ad_cost%'
+            - '@doctrine.orm.entity_manager'
+
+    restomods.limelight:
+        class:      Restomods\ListingBundle\Helper\LimeLightHelper
+        arguments:
+            - '%restomods.limelight.domain%'
+            - '%restomods.limelight.username%'
+            - '%restomods.limelight.password%'
+            - '%restomods.limelight.campaign%'
+            - '%restomods.limelight.campaign_upsell%'
+            - '%restomods.limelight.shipping%'
+            - '%restomods.limelight.membership_product_id%'
+            - '%restomods.limelight.single_ad_product_id%'
+            - '%restomods.limelight.threedverify_enabled%'
+            - '@doctrine.orm.entity_manager'
+
+
+    restomods.limelight.v2:
+        class:      Restomods\ListingBundle\Helper\LimeLightV2Helper
+        arguments:
+            - '%restomods.limelight.domain%'
+            - '%restomods.limelight.username%'
+            - '%restomods.limelight.password%'
+            - '%restomods.limelight.campaign%'
+            - '%restomods.limelight.campaign_upsell%'
+            - '%restomods.limelight.shipping%'
+            - '%restomods.limelight.membership_product_id%'
+            - '%restomods.limelight.single_ad_product_id%'
+            - '%restomods.limelight.threedverify_enabled%'
+            - '@doctrine.orm.entity_manager'
+
+    restomods.shopify:
+        class:      Restomods\ListingBundle\Helper\ShopifyHelper
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@service_container'
+
+    restomods.rawsqlhelper:
+        class:      Restomods\ListingBundle\Helper\RawSQLHelper
+        arguments:
+            - '@doctrine.orm.entity_manager'
+
+    restomods.sendgrid.api:
+        class:      Restomods\ListingBundle\Helper\SendgridHelper
+        arguments:
+            - '%restomods.sendgrid.api_key%'
+            - '@service_container'
+
+    restomods.user.registration:
+        class: Application\Sonata\UserBundle\Form\RegistrationFormType
+        tags:
+            - { name: form.type, alias: restomods_user_registration }

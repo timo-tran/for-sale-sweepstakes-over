@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}RestoMods {{sweepstakes.carName}} Sweepstakes{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,500,700|Gudea:400,500,700|Abel:400,500,700|Open+Sans:400,500,700|Roboto:300,400,700,900|Roboto+Slab:300,400|Oswald:400,500,700|Montserrat:300,400,700" rel="stylesheet">
+    {% block stylesheets %}
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        {% stylesheets 'css/*' filter='cssrewrite' output='dist/main.css' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/extra/ecommerce.css') }}" />
+        {% block extra_stylesheets %}{% endblock extra_stylesheets %}
+    {% endblock %}
+
+    <link rel="shortcut icon" href="https://restomods.com/wp-content/uploads/2014/11/favicon.ico"/>
+    <meta name="description" content="You could win a choice between this {{sweepstakes.carName}} or {{ sweepstakes.prize }} in cash claim your entries today.">
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="{{ sweepstakes.name }} Sweepstakes">
+    <meta property="og:description" content="You could win a choice between this {{sweepstakes.carName}} or {{ sweepstakes.prize }} in cash claim your entries today.">
+    <meta property="og:url" content="https://restomods.com{{path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))}}"/>
+    <meta property="og:site_name" content="RestoMods.com"/>
+    <meta property="og:image" content="{{sweepstakes.featuredImage1 | imagine_filter('medium') | replace({'http:':restomods_url_scheme})}}"/>
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="google" value="notranslate" />
+    {{ settings.landingHeaderScript | raw }}
+</head>
+<body class="sweepstakes lazyload" data-src="{{ sweepstakes.featuredImage1 | imagine_filter('original') | replace({'http:':restomods_url_scheme}) }}" style="background-image:url({{ sweepstakes.featuredImage1 | imagine_filter('small') | replace({'http:':restomods_url_scheme}) }});background-repeat:no-repeat;background-size:cover;background-attachment: fixed !important;">
+    {{ settings.landingNoScript | raw }}
+    <div class="container-fluid">
+        {% set _block = block('navbar') %}
+        {% if _block is not empty %}
+        {% block navbar %}{% endblock %}
+        {% else %}
+        <nav class="navbar navbar-default row abel" style="margin-bottom: 0px;">
+            <div class="container" style="padding:32px 0px">
+                <div class="container-fluid">
+                    <div class="col-sm-6 text-center text-sm-left col-left">
+                        <a class="display:block" href="{{ path('restomods_listing_index') }}"><img alt="Brand" src="{{ asset('images/logo-white.png') }}"></a>
+                    </div>
+                    <div class="col-sm-6 text-center text-sm-right col-right">
+                        <span>Entry Deadline: </span><span>{{sweepstakes.endDate | date_modify('-5 hours') | date('F jS, Y')}}</span>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </nav>
+        {% endif %}
+        {% block body %}{% endblock %}
+    </div>
+    {% block javascripts %}
+        {% javascripts 'js/jquery.min.js' 'js/bootstrap.min.js' 'js/modernizr.js' 'js/slick.min.js' 'js/sweepstakes.js' output='dist/svendor.js' %}
+            <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        {% block extra_javascripts %}{% endblock extra_javascripts %}
+        {{ settings.landingFooterScript | raw }}
+    {% endblock %}
+    </body>
+</html>

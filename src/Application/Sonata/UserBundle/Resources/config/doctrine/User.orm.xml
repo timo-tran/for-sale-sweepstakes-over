@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Application\Sonata\UserBundle\Entity\User" table="fos_user_user">
+
+        <id name="id" column="id" type="integer">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="stripeCustomerId" column="stripe_customer_id" type="string" length="63" nullable="true"/>
+        <field name="stripeSubscriptionId" column="stripe_subscription_id" type="string" length="63" nullable="true"/>
+        <field name="stripeAddOnChargeId" column="stripe_add_on_charge_id" type="string" length="63" nullable="true"/>
+        <field name="referrerCode" column="referrer_code" type="string" length="63" nullable="true"/>
+        <field name="sweepstakesPaymentCompleted" column="sweepstakes_payment_completed" type="boolean" nullable="true"/>
+        <field name="renewEntriesPatch" column="renew_entries_patch" type="boolean" nullable="true"/>
+        <field name="abandonCartEmail" column="abandon_cart_email" type="boolean" nullable="true">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="funnelPurchaseId" column="funnel_purchase_id" type="string" length="63" nullable="true"/>
+        <field name="funnelImportedUser" column="funnel_imported_user" type="boolean" nullable="true"/>
+        <field name="address" column="address" type="string" length="255" nullable="true"/>
+        <field name="city" column="city" type="string" length="63" nullable="true"/>
+        <field name="state" column="state" type="string" length="63" nullable="true"/>
+        <field name="country" column="country" type="string" length="63" nullable="true"/>
+        <field name="zip" column="zip" type="string" length="63" nullable="true"/>
+        <field name="cc" column="cc" type="string" length="255" nullable="true"/>
+        <field name="limeLightCustomerId" column="limelight_customer_id" type="string" length="63" nullable="true"/>
+        <field name="lastOrderId" column="last_order_id" type="string" length="63" nullable="true"/>
+        <field name="subscriptionOrderId" column="subscription_order_id" type="string" length="63" nullable="true"/>
+        <field name="subscribedAt" column="subscribed_at" type="datetime" nullable="false">
+            <options>
+                <option name="default">0000-00-00 00:00:00</option>
+            </options>
+        </field>
+
+        <field name="cfAffiliateId" column="cf_affiliate_id" type="string" length="255" nullable="true"/>
+        <field name="utmSource" column="utm_source" type="string" length="63" nullable="true"/>
+        <field name="utmMedium" column="utm_medium" type="string" length="63" nullable="true"/>
+        <field name="utmCampaign" column="utm_campaign" type="string" length="255" nullable="true"/>
+        <field name="utmTerm" column="utm_term" type="string" length="255" nullable="true"/>
+        <field name="utmContent" column="utm_content" type="string" length="255" nullable="true"/>
+        <field name="cfUvid" column="cf_uvid" type="string" length="255" nullable="true"/>
+        <field name="fromSweepstakes" column="from_sweepstakes" type="boolean" nullable="true"/>
+        <field name="apiUserid" column="api_userid" type="string" length="127" nullable="true"/>
+
+    </entity>
+
+</doctrine-mapping>

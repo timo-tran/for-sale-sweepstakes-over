@@ -1,0 +1,52 @@
+<table class="table table-hover table-striped">
+    <tr>
+        <th>Date</th>
+        <th>Details</th>
+        <th>Amount</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+    {% for payment in admin.parameters.payments.stripe %}
+        <tr {% if payment.refunded %}class="warning" {% endif %}>
+            <td class="col-md-2">{{ payment.created|date("d M Y") }}</td>
+            <td class="col-md-6">{{ payment.statement_descriptor|default(payment.description) }}</td>
+            <td class="col-md-3">
+                ${{ (payment.amount / 100) }}
+                {% if payment.refunded %}( -${{ (payment.amount_refunded / 100) }} refunded ){% endif %}
+            </td>
+            <td class="col-md-6"><span class="label label-{{ payment.status == 'succeeded' ? 'success' : 'danger' }}">{{ payment.status }}</span></td>
+            <td class="col-md-1">
+                {% if not payment.refunded and payment.status == 'succeeded' %}
+                    <a class="btn btn-sm btn-default refund_link" href="{{ path('restomods_stripe_refund_charge', {'chargeId': payment.id}) }}"
+                       data-toggle="tooltip" title="Refund">
+                        <i class="fa fa-money" aria-hidden="true"></i> <span class="rm-action">Refund</span>
+                    </a>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    {% for payment in admin.parameters.payments.limelight %}
+        <tr {% if payment.order_status != 2 %}class="warning" {% endif %}>
+            <td class="col-md-2">{{ payment.time_stamp|date("d M Y") }}</td>
+            <td class="col-md-6">
+                {% for product in payment.products %}
+                    <span class="col-xs-12">{{ product.name }}</span>
+                {% endfor %}
+            </td>
+            <td class="col-md-3">
+                ${{ payment.order_total }}
+                {% if payment.refund_amount > 0 %}( -${{ payment.refund_amount }} refunded ){% endif %}
+                {% if payment.void_amount > 0 %}( -${{ payment.void_amount }} void ){% endif %}
+            </td>
+            <td class="col-md-6"><span class="label label-{{ payment.order_status == 2 ? 'success' : 'danger' }}">{{ payment.order_status_desc }}</span></td>
+            <td class="col-md-1">
+                {% if payment.order_status == 2 %}
+                    <a class="btn btn-sm btn-default refund_link" href="{{ path('restomods_limelight_refund_order', {'orderId': payment.order_id}) }}"
+                       data-toggle="tooltip" title="Refund">
+                        <i class="fa fa-money" aria-hidden="true"></i> <span class="rm-action">Refund</span>
+                    </a>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+</table>

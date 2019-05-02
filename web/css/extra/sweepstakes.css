@@ -1,0 +1,117 @@
+body.sweepstakes .pointer{cursor:pointer}
+body.sweepstakes .strong{font-weight:700;}
+body.sweepstakes .white{color:white;}
+body.sweepstakes .green{color:#A4E815;}
+body.sweepstakes .brown{color:#d6be60;}
+body.sweepstakes .red{color:#E43B2C;}
+body.sweepstakes .yellow{color:rgb(255, 227, 0);}
+body.sweepstakes .bgCover{background-size: cover !important;-webkit-background-size: cover !important;background-attachment: fixed !important;background-repeat: repeat repeat !important;}
+body.sweepstakes .headline{font-size:72px;font-family:'Oswald', sans-serif;color:white;}
+body.sweepstakes .nav-tabs{border-bottom:5px solid #1372A8;display:flex;}
+body.sweepstakes .nav-tabs>li.disabled{pointer-events:none;}
+body.sweepstakes .nav-tabs>li>a{background:unset !important;border:unset !important;color:rgb(47, 47, 47);}
+body.sweepstakes .nav-tabs>li>a .number{font-size:27px;font-weight:700;padding-right:10px;}
+body.sweepstakes .nav-tabs>li>a .title{font-size:14px;font-weight:700;}
+body.sweepstakes .nav-tabs>li>a .desc{font-size:12px;}
+body.sweepstakes .nav-tabs>li.active> a .title{color:rgb(39, 156, 235);}
+body.sweepstakes .nav-tabs>li:not(.active)> a > div{opacity:0.7;}
+body.sweepstakes .nav-tabs>li.active>a::after{color:#1372A8;font-family:'FontAwesome';position:absolute;right:50%;top:calc(100% - 14px);content:'\f04b';-webkit-transform:rotate(-90deg);-moz-transform:rotate(-90deg);-o-transform:rotate(-90deg);-ms-transform:rotate(-90deg);transform:rotate(-90deg);}
+body.sweepstakes .tab-pane{padding:20px;}
+body.sweepstakes .tab-pane .input-container{padding:10px 0px;}
+body.sweepstakes .tab-pane .input-container .form-control{height:50px;}
+body.sweepstakes .tab-pane .input-container .form-control.is-invalid{border-color:#E43B2C;}
+body.sweepstakes .tab-pane .control-label{font-size:12px;}
+body.sweepstakes .tab-pane .divider{padding:5px 0px;}
+body.sweepstakes .tab-pane .divider span{font-size:12px;color:#626262;font-weight:bold;}
+body.sweepstakes .tab-pane .card-form{margin-top:20px;border:2px solid #ddd;padding:15px;border-radius:4px;background-color:rgba(221,221,221,0.18);}
+body.sweepstakes .tab-pane .tbl-header{font-weight:bold;line-height:32px;border-bottom:1px solid #e2e7e8;padding-top:10px;}
+body.sweepstakes .tab-pane .order-items{padding:5px 0px;}
+body.sweepstakes .count-down{}
+body.sweepstakes .count-down .title{font-size:32px;color:#FFF;}
+body.sweepstakes .count-down .timer{display:flex;color:#C3122A;}
+body.sweepstakes .count-down .timer div{flex:1 0;position:relative;}
+body.sweepstakes .count-down .unit{display:flex;font-weight:700;opacity:0.8;}
+body.sweepstakes .count-down .unit div{flex:1 0;position:relative;}
+body.sweepstakes .count-down .timer div:not(:last-child)::after{font-family:Roboto;position:absolute;right:-2px;top:0px;content:':';}
+body.sweepstakes .count-down.large .timer{font-size:48px;}
+body.sweepstakes .count-down.large .timer div{max-width:120px;min-width:120px;}
+body.sweepstakes .count-down.large .unit{font-size:14px;margin-top:10px;}
+body.sweepstakes .count-down.large .unit div{max-width:120px;min-width:120px;}
+body.sweepstakes .count-down.large .timer div:not(:last-child)::after{top:-4px;right:-8px;}
+body.sweepstakes .count-down.small .timer{font-size:16px;font-weight:700;}
+body.sweepstakes .count-down.small .unit{font-size:10px;margin-top:5px;}
+body.sweepstakes .count-down.small .timer div:not(:last-child)::after{}
+body.sweepstakes .footer{font-size:14px;padding:50px 0px;color:white;}
+body.sweepstakes .elButton{flex-direction:column;display:flex;align-items:center;width:100%;padding:13px 35px;border:1px solid rgba(0,0,0,0.2);box-shadow:inset 0 1px 0 rgba(255,255,255,0.2);border-radius:4px;color:white;}
+body.sweepstakes .elButton.yellow{background:#fff005;background:-moz-linear-gradient(top, #fff005 0%, #ff9951 55%, #ed5900 99%);background:-webkit-linear-gradient(top, #fff005 0%,#ff9951 55%,#ed5900 99%);background:linear-gradient(to bottom, #fff005 0%,#ff9951 55%,#ed5900 99%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff005', endColorstr='#ed5900',GradientType=0);border-radius:unset;opacity:1}
+body.sweepstakes .elButton.gray{background-color:rgba(47, 47, 47, 0.17);opacity:1;color:rgb(96, 96, 96);}
+body.sweepstakes .elButton.green{background-color:rgb(148, 207, 25);opacity:1}
+body.sweepstakes .elButton.red{background-color:#cc0804;}
+body.sweepstakes .elButton.brown{background-color:#c4b473;}
+body.sweepstakes .elButton.blue{background-color:rgb(62, 129, 176);}
+body.sweepstakes .elButton.green:disabled {opacity:0.7;cursor:default}
+body.sweepstakes .elButton.yellow:disabled {opacity:0.7;cursor:default}
+body.sweepstakes .elButton:hover:not(.loading):not([disabled]){box-shadow:inset 0 2px 2px 0 rgba(255,255,255,0.22), 0 233px 233px 0 rgba(255,255,255,0.12) inset;outline:0;text-decoration:none;cursor:pointer;}
+body.sweepstakes .elButton.green:hover:not(.loading):not([disabled]){background-color:rgb(160, 224, 26);}
+body.sweepstakes .elButton.red:hover:not(.loading):not([disabled]){background-color:rgb(237, 75, 47);}
+body.sweepstakes .elButton.blue:hover:not(.loading):not([disabled]){background-color:rgb(66, 138, 188);}
+body.sweepstakes .elButton .fa-spin{opacity:0;display:none;}
+body.sweepstakes .elButton .main{font-weight:700;text-align:center;}
+body.sweepstakes .elButton .sub{font-weight:normal;text-align:center;opacity:0.7;}
+body.sweepstakes .elButton.yellow .main{text-align:center;line-height:1.1em;}
+body.sweepstakes .elButton.yellow .sub{text-align:center;text-transform:uppercase;}
+body.sweepstakes .elButton .loading{display:none;}
+body.sweepstakes .elButton.large .main{font-size:27px;}
+body.sweepstakes .elButton.large .sub{font-size:18px;}
+body.sweepstakes .elButton.yellow.large .main{font-family:'Oswald', sans-serif;font-size:24pt;font-weight:700;text-transform:uppercase;margin-bottom:0;color:#000;text-shadow:0 1px 0 rgba(255, 255, 255, .7);position:relative;}
+body.sweepstakes .elButton.yellow.large .sub{font-size:12pt;font-weight:700;font-family:'Roboto', sans-serif;opacity:1;color:#000;text-shadow:0 1px 0 rgba(255, 255, 255, .7);}
+body.sweepstakes .elButton.yellow.large.loading .sub{opacity:0;}
+body.sweepstakes .elButton.large .loading span{font-size:18px;}
+body.sweepstakes .elButton.normal .main{font-size:20px;}
+body.sweepstakes .elButton.normal .sub{font-size:14px;}
+body.sweepstakes .elButton.normal .loading span{font-size:14px;}
+body.sweepstakes .elButton.loading{pointer-events:none;position:relative;}
+body.sweepstakes .elButton.loading .loading{display:block;position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:row;align-items:center;justify-content:center;}
+body.sweepstakes .elButton.loading .main{opacity:0;}
+body.sweepstakes .elButton.loading .sub{opacity:0;}
+body.sweepstakes .elButton.loading .fa-spin{opacity:1;display:block;}
+body.sweepstakes .elButton.black-text{color:rgb(16, 16, 16);}
+@media only screen and (max-width:770px) and (min-width:0px){body.sweepstakes a.elButton.large .main{font-size:21px;}
+body.sweepstakes a.elButton.large .sub{font-size:14px;}
+body.sweepstakes .count-down.large .timer div:not(:last-child)::after{top:-2px;}
+body.sweepstakes .count-down.large .timer{font-size:24px;}
+body.sweepstakes .count-down.large .unit{font-size:12px;margin-top:5px;}
+body.sweepstakes .count-down.large .timer div{max-width:60px;min-width:60px;}
+body.sweepstakes .count-down.large .unit div{max-width:60px;min-width:60px;}
+}
+body{font-family:Roboto, Helvetica, sans-serif;-webkit-font-smoothing:antialiased;}
+.container-fluid > nav.navbar{margin-bottom:0px;}
+.container-fluid > .navbar-header{background:white;margin-right:-30px;margin-left:-30px;min-height:80px;padding:15px calc(5vw);display:flex;flex-wrap:wrap;align-items:center;}
+.container-fluid > .navbar-header .contentInner{display:flex;flex-direction:row;align-items:center;justify-content:center;width:100%;}
+.container-fluid > .navbar-header .navbar-brand{height:auto;margin:0px;padding:0px;}
+.container-fluid > .navbar-header .contentInner > div{text-align:right;max-width:100%;}
+.container-fluid > .navbar-header span{font-size:18px;color:#c4b473;}
+.corner-radius4{border-radius:4px;}
+.aspect1-1{width:100%;padding-top:100%;position:relative;}
+.aspect3-2{width:100%;padding-top:66.66%;position:relative;}
+.aspect1-1 img{width:100%;height:100%;top:0;right:0;left:0;bottom:0;position:absolute;object-fit:cover;}
+.aspect3-2 img{width:100%;height:100%;top:0;right:0;left:0;bottom:0;position:absolute;object-fit:cover;}
+.body{}
+.section{padding-top:20px;padding-bottom:20px;}
+.sub-section{padding:20px;}
+.flex{display:flex;}
+.flex.layout-row{flex-direction:row;}
+.flex.layout-col{flex-direction:column;}
+.flex.wrap{flex-wrap:wrap;}
+.flex.center{align-items:center;}
+.flex.justify-center{justify-content:center;}
+.flex.justify-end{justify-content:flex-end;}
+.flex-auto{flex:1 0 auto;}
+.flex-1{flex:1 0;}
+.border-2{border-width:2px;border-style:solid;}
+.contentInner{max-width:1200px;margin:auto;}
+.lh-normal{line-height:normal}
+@media only screen and (max-width:767px) and (min-width:0px){.flex.layout-xs-col{flex-direction:column !important;}
+body.sweepstakes .headline{font-size:40px;}
+.container-fluid > .navbar-header .contentInner{flex-direction:column !important;}
+}

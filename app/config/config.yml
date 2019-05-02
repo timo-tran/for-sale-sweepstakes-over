@@ -1,0 +1,269 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: en
+    upload_dir: '%kernel.root_dir%/../web/uploads/media'
+    media_cache_dir: '%kernel.root_dir%/../web/media/cache'
+
+framework:
+    #esi:             ~
+    translator:      { fallbacks: ["%locale%"] }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    #serializer:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+    default_locale:  "%locale%"
+    trusted_hosts:   ~
+    trusted_proxies: ~
+    session:
+        # handler_id set to null will use default session handler from php.ini
+        handler_id:  ~
+    fragments:       ~
+    http_method_override: true
+    assets:
+        version: v28.1
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+    globals:
+        base_url: '%restomods.base_url%'
+        restomods_stripe_publishable_key: '%restomods.stripe.publishable_key%'
+        restomods_stripe_single_ad_cost:  '%restomods.stripe.single_ad_cost%'
+        restomods_stripe_membership_cost: '%restomods.stripe.membership_cost%'
+        restomods_google_analytics_id: '%restomods.google_analytics_id%'
+        restomods_facebook_pixel_id: '%restomods.facebook_pixel_id%'
+        restomods_facebook_pixel_id2: '%restomods.facebook_pixel_id2%'
+        restomods_gtm_id: '%restomods.gtm_id%'
+        restomods_gtm_id2: '%restomods.gtm_id2%'
+        restomods_limelight_threed_verify_enabled: '%restomods.limelight.threedverify_enabled%'
+        restomods_url_scheme: '%restomods.url.scheme%'
+    form:
+        resources:
+            - 'SonataCoreBundle:Form:datepicker.html.twig'
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: false
+    filters:
+        cssrewrite: ~
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   pdo_mysql
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        charset:  UTF8
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #path:     "%database_path%"
+        types:
+            json: Sonata\Doctrine\Types\JsonType
+            enumproducttype: Restomods\ListingBundle\Types\SweepstakesProductEnumType
+
+
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+
+stof_doctrine_extensions:
+    default_locale: en_US
+    uploadable:
+        default_file_path:       %kernel.root_dir%/../web/uploads
+    orm:
+        default:
+            uploadable: true
+            timestampable: true
+            sluggable: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    port:      "%mailer_port%"
+    encryption: "%mailer_encryption%"
+    spool:     { type: memory }
+
+sonata_user:
+    security_acl: true
+    manager_type: orm
+
+    impersonating:
+        route: restomods_listing_index
+
+    profile:
+      register:
+        form:
+          type: 'restomods_user_registration'
+        confirm:
+          redirect:
+            route: 'sonata_user_profile_show'
+            route_parameters: ~
+    admin:
+      user:
+        class: Application\Sonata\UserBundle\Admin\Model\UserAdmin
+
+
+sonata_block:
+    default_context: [listings]
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts: [listings]
+        sonata.user.block.menu:
+        sonata.user.block.account:
+        sonata.block.service.text:
+
+sonata_admin:
+    title: CRUSHXO
+    options:
+        title_mode: "single_text"
+    dashboard:
+        groups:
+            config:
+                label: Config
+                items: ~
+            Sweepstakes:
+                label: Sweepstakes
+                items: ~
+            user:
+                label: Users
+                items: [sonata.user.admin.user]
+            Administer:
+                icon: '<i class="fa fa-cog"></i>'
+                items:
+                    - {route: admin_restomods_listing_settings_edit, route_params: {id: 'site'}, label: 'Settings'}
+        blocks:
+            -
+                position: left
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [listings, config]
+            -
+                position: right
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [user, media, sweepstakes]
+    templates:
+        layout: RestomodsListingBundle::Admin/standard_layout.html.twig
+
+sonata_media:
+    db_driver: doctrine_orm
+    default_context: listings
+    contexts:
+        listings:
+            providers:
+                - sonata.media.provider.image
+
+            formats:
+                small: { width: 217, quality: 100 }
+                big: { width: 640, quality: 80 }
+    cdn:
+        server:
+            path: "%restomods.base_url%/uploads/media"
+
+    filesystem:
+        local:
+            directory: "%kernel.root_dir%/../web/uploads/media"
+            create: false
+
+ivory_google_map:
+    map:
+        api_key: "%restomods.gmaps.api_key%"
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Application\Sonata\UserBundle\Entity\User
+    from_email:
+        address:        "%mailer_address%"
+        sender_name:    "%mailer_name%"
+    group:
+        group_class: Application\Sonata\UserBundle\Entity\Group
+        group_manager: sonata.user.orm.group_manager
+
+    service:
+        user_manager: sonata.user.orm.user_manager
+    resetting:
+        token_ttl: 0
+
+
+ewz_recaptcha:
+    public_key:  "%restomods.recaptcha.public_key%"
+    private_key: "%restomods.recaptcha.private_key%"
+
+cache_adapter:
+    providers:
+        restomods_memcache_adapter:
+            factory: 'cache.factory.memcache'
+            options:
+                host: 127.0.0.1
+                port: 11211
+            aliases: ['alias.restomods_memcache']
+
+liip_imagine:
+    resolvers:
+        default:
+            web_path: ~
+    loaders:
+        default:
+            filesystem:
+                data_root:
+                    - '%upload_dir%'
+    driver:               imagick
+    cache:                default
+    data_loader:          default
+    default_image:        null
+    controller:
+        filter_action:         liip_imagine.controller:filterAction
+        filter_runtime_action: liip_imagine.controller:filterRuntimeAction
+    filter_sets:
+        cache : ~
+        original:
+            quality: 70
+            format: jpg
+            filters:
+                background : { color : '#ffffff' }
+        medium:
+            quality: 70
+            format: jpg
+            filters:
+                thumbnail: { size: [950, 534], mode: outset }
+        small:
+            quality: 70
+            format: jpg
+            filters:
+                thumbnail: { size: [560, 392], mode: outset }
+        thumb:
+            quality: 70
+            format: jpg
+            filters:
+                thumbnail: { size: [280, 158], mode: outset }
+        original_png:
+            quality: 70
+            format: png
+        tiny:
+            quality: 70
+            format: png
+            filters:
+                thumbnail: { size: [100, 80], mode: inset }
